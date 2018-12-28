@@ -13,3 +13,5 @@ const mix = require('laravel-mix');
 
 mix.js('resources/js/app.js', 'public/js')
    .sass('resources/sass/app.scss', 'public/css');
+mix.js('resources/js/styles.js', 'public/js');
+mix.copy('resources/js/jquery-3.3.1.min.js', 'public/js/jquery.js');
