@@ -1,4 +1,4 @@
 <?php
     return [
-        'failed' => ':attribute không tồn tại.',
+        'failed' => 'Thuộc tính không tồn tại.',
     ];
