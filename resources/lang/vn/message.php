@@ -73,5 +73,10 @@
         'subject_ready' => 'Sẵn sàng',
         'subject_end' => 'Kết thúc',
         'list' => 'Danh sách',
-        'back' => 'Trở về'
+        'back' => 'Trở về',
+        'list_trainee_course' => 'Danh sách học viên',
+        'list_suppervisor_course' => 'Danh sách suppervisor',
+        'name_trainee' => 'Tên học viên',
+        'name_suppervisor' => 'Tên suppervisor',
+        'add_trainee_to_course' => 'Thêm học viên vào lớp học'
     ];
