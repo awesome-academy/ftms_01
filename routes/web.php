@@ -34,5 +34,10 @@ Route::group(['prefix' => 'admin'], function(){
     Route::get('add-trainee', 'Admin\AddTraineeToCourseController@create')->name('trainee.create');
     Route::post('show-subject', 'Admin\AddTraineeToCourseController@showSubject');
     Route::post('add-trainee', 'Admin\AddTraineeToCourseController@stores')->name('trainee.stores');
-    Route::get('delete-trainee/{uer}/{course}', 'Admin\AddTraineeToCourseController@deleteTrainee')->name('trainee.destroy');
+    Route::get('delete-trainee/{user}/{course}', 'Admin\AddTraineeToCourseController@deleteTrainee')->name('trainee.destroy');
+    Route::get('show-suppervisor', 'Admin\AddSuppervisorController@index')->name('suppervisor.index');
+    Route::post('show-suppervisor', 'Admin\AddSuppervisorController@show');
+    Route::get('delete-suppervisor/{user}/{course}', 'Admin\AddSuppervisorController@delete')->name('suppervisor.destroy');
+    Route::get('add-suppervisor', 'Admin\AddSuppervisorController@create')->name('supperviosr.create');
+    Route::post('add-suppervisor', 'Admin\AddSuppervisorController@stores')->name('suppervisor.stores');
 });

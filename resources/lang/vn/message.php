@@ -77,6 +77,9 @@
         'list_trainee_course' => 'Danh sách học viên',
         'list_suppervisor_course' => 'Danh sách suppervisor',
         'name_trainee' => 'Tên học viên',
+        'management_trainee' => 'Quản lý học viên',
+        'management_suppervisor' => 'Quản lý suppervisor',
         'name_suppervisor' => 'Tên suppervisor',
-        'add_trainee_to_course' => 'Thêm học viên vào lớp học'
+        'add_trainee_to_course' => 'Thêm học viên vào lớp học',
+        'add_suppervisor_to_course' => 'Thêm suppervisor vào lớp học'
     ];

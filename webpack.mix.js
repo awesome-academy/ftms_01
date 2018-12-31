@@ -26,6 +26,7 @@ mix.styles([
     ], 'public/css/admin.css');
 mix.scripts([
         'resources/js/admin/adminlte.min.js',
-        'resources/js/admin/add-to-course.js'
-    ], 'public/js/adminlte.min.js')
+        'resources/js/admin/add-to-course.js',
+        'resources/js/admin/add_suppervisor_course.js'
+    ], 'public/js/adminlte.min.js');
 mix.copyDirectory('resources/fonts', 'public/fonts');
