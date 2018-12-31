@@ -37,9 +37,7 @@
                         <tr>
                             <td> {{ $supervisors->name }} </td>
                             <td> {{ $supervisors->email }} </td>
-                            <td>
-                                {{ $supervisors->role_custom }}
-                            </td>
+                            <td>{{ $supervisors->role_custom }}</td>
                             <td>{{ $supervisors->password }}</td>
                             <td>
                                 <div class="col-md-5">

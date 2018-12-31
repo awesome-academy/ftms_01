@@ -34,14 +34,8 @@
                         <tr>
                             <td> {{ $members->name }} </td>
                             <td> {{ $members->email }} </td>
-                            <td>
-                                @if($members->role == config('admin.member'))
-                                    @lang('message.member')
-                                @else
-                                    @lang('message.supervisor')
-                                @endif
-                            </td>
-                            <td>{{ $members->password }}</td>
+                            <td> {{ $members->role_custom }} </td>
+                            <td> {{ $members->password }} </td>
                             <td>
                                 <div class="col-md-5">
                                     {{Form::open()}}
