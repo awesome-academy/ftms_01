@@ -38,15 +38,28 @@
                             </span>
                         </a>
                         <ul class="treeview-menu">
-                            <li><a href=""><i class="fa fa-circle-o"></i> @lang('message.user')</a></li>
+                            <li class="treeview">
+                                <a href="#">
+                                    <i class="fa fa-user"></i> <span>@lang('message.user')</span>
+                                    <span class="pull-right-container">
+                                        <i class="fa fa-angle-left pull-right"></i>
+                                    </span>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li>
+                                        <a href="{{ route('member.show') }}"><i class="fa fa-circle-o"></i> @lang('message.member')</a>
+                                    </li>
+                                     <li>
+                                        <a href="{{ route('supervisor.show') }}"><i class="fa fa-circle-o"></i> @lang('message.supervisor')</a>
+                                    </li>
+                                </ul>
+                            </li>
                         </ul>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="" id="logout">
+                        <a class="dropdown-item" href="{{ route('logout-admin') }}">
                             @lang('message.logout')
                         </a>
-                        {{ Form::open(['route' => 'logout', 'id' => 'logout-form', 'display' => 'none']) }}
-                        {{ Form::close() }}
                     </li>
                 </ul>
             </section>
