@@ -26,5 +26,12 @@
         'send_verification' => 'Liên kết xác minh đã đưọc gửi đến email của bạn!',
         'check_email' => 'Vui lòng kiểm tra email để biết liên kết xác minh',
         'not_get_email' => 'Nếu không nhận được email',
-        'click' => 'Nhấm chọn để gửi lại yêu cầu'
+        'click' => 'Nhấm chọn để gửi lại yêu cầu',
+        'main_navigation' => 'Navigation',
+        'management' => 'Quản lý',
+        'user' => 'Quản lý tài khoản',
+        'version' => 'Version 2.4.0',
+        'copyright' => 'Copyright',
+        'cource' => 'Almsaeed Studio',
+        'allright' => 'All rights reserved.',
     ];
