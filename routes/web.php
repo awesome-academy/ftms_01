@@ -27,4 +27,5 @@ Route::group(['prefix' => 'admin'], function(){
     Route::get('logout-admin', 'Admin\AdminController@logoutAdmin')->name('logout-admin');
     Route::get('member', 'Admin\AdminController@showMember')->name('member.show');
     Route::get('supervisor', 'Admin\AdminController@showSupervisor')->name('supervisor.show');
+    Route::resource('course', 'Admin\CourseController');
 });

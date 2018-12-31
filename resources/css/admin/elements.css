@@ -1,0 +1,23 @@
+.course-box{
+    width: 500px;
+    margin-left: 300px
+}
+.course-title{
+    text-align: center;
+}
+.error{
+    color: red;
+}
+.img-course{
+    width: 100px;
+    height: 50px;
+}
+.name-course{
+    width: 200px;
+}
+.col-img-course{
+    width: 100px;
+}
+.col-action{
+    width: 200px;
+}

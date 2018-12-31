@@ -22,6 +22,7 @@ mix.styles([
         'resources/css/admin/jquery-jvectormap.css',
         'resources/css/admin/AdminLTE.min.css',
         'resources/css/admin/_all-skins.min.css',
+        'resources/css/admin/elements.css'
     ], 'public/css/admin.css');
 mix.js('resources/js/admin/adminlte.min.js', 'public/js');
 mix.copyDirectory('resources/fonts', 'public/fonts');

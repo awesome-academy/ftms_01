@@ -9,5 +9,6 @@ return [
     'email' => ':attribute phải là một email hợp lệ.',
     'exists' => ':attribute không hợp lệ.',
     'file' => ':attribute phải là một file hợp lệ.',
-    'unique' => 'Thuộc tính đã tồn tại'
+    'unique' => 'Thuộc tính đã tồn tại',
+    'max' => 'Quá kích thước cho phép'
 ];
