@@ -8,5 +8,9 @@
         'course_start' => 1,
         'course_ready' => 0,
         'course_end' => 2,
-        'date_format' => 'm/d/Y'
+        'date_format' => 'm/d/Y',
+        'paginate_subject' => 10,
+        'rows' => 5,
+        'subject_ready' => 1,
+        'subject_end' => 0
     ];

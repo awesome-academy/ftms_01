@@ -28,4 +28,5 @@ Route::group(['prefix' => 'admin'], function(){
     Route::get('member', 'Admin\AdminController@showMember')->name('member.show');
     Route::get('supervisor', 'Admin\AdminController@showSupervisor')->name('supervisor.show');
     Route::resource('course', 'Admin\CourseController');
+    Route::resource('subject', 'Admin\SubjectController');
 });
