@@ -1,10 +1,16 @@
 @extends('layouts.app')
+@section(trans('message.title'), trans('message.login'))
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">@lang('message.login')</div>
+                    @if(session()->has(trans('message.fails')))
+                        <div class="alert alert-danger">
+                            {{ session(trans('message.fails')) }}
+                        </div>
+                    @endif
                     <div class="card-body">
                         {{ Form::open(['route' => 'login']) }}
                             <div class="form-group row">

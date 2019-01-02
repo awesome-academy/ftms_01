@@ -21,6 +21,7 @@ class User extends Authenticatable
         'password',
         'role'
     ];
+    protected $appends = ['role_custom'];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -31,7 +32,6 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
-
     public function profile()
     {
         return $this->hasOne(Profile::class);
@@ -50,5 +50,27 @@ class User extends Authenticatable
     public function reports()
     {
         return $this->hasMany(Report::class);
+    }
+
+    public function setRoleAttribute($value)
+    {
+        $this->attributes['role'] = $value;
+    }
+
+    public function getRoleCustomAttribute()
+    {
+        if ($this->role == config('admin.admin'))
+        {
+            return trans('message.admin');
+        }
+        if ($this->role == config('admin.supervisor'))
+        {
+            return trans('message.supervisor');
+        }
+        if ($this->role == config('admin.member'))
+        {
+            return trans('message.member');
+        }
+        return null;
     }
 }

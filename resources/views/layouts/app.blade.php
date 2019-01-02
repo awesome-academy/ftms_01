@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>{{ config('app.name', trans('messgae.laravel')) }}</title>
+    <title>@yield(trans('message.title'))</title>
     {{ Html::script(asset('js/app.js')) }}
     {{ Html::style('//fonts.gstatic.com', ['rel' => 'dns-prefetch']) }}
     {{ Html::style('https://fonts.googleapis.com/css?family=Nunito') }}
@@ -15,7 +15,7 @@
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', trans('message.laravel')) }}
+                    {{ config('app.name', trans('message.title_admin')) }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
