@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ config('app.name', trans('messgae.laravel')) }}</title>
-    <script src="{{ asset('js/app.js') }}" defer></script>
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    {{ Html::script(asset('js/app.js')) }}
+    {{ Html::style('//fonts.gstatic.com', ['rel' => 'dns-prefetch']) }}
+    {{ Html::style('https://fonts.googleapis.com/css?family=Nunito') }}
+    {{ Html::style(asset('css/app.css')) }}
 </head>
 <body>
     <div id="app">
@@ -56,6 +56,6 @@
         </main>
     </div>
 </body>
-<script type="text/javascript" src="{{ asset('js/jquery.js') }}"></script>
-<script type="text/javascript" src="{{ asset('js/styles.js') }}"></script>
+{{ Html::script(asset('js/jquery.js')) }}
+{{ Html::script('js/styles.js') }}
 </html>

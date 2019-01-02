@@ -15,3 +15,13 @@ mix.js('resources/js/app.js', 'public/js')
    .sass('resources/sass/app.scss', 'public/css');
 mix.js('resources/js/styles.js', 'public/js');
 mix.copy('resources/js/jquery-3.3.1.min.js', 'public/js/jquery.js');
+mix.styles([
+        'resources/css/admin/bootstrap.min.css',
+        'resources/css/admin/font-awesome.min.css',
+        'resources/css/admin/ionicons.min.css',
+        'resources/css/admin/jquery-jvectormap.css',
+        'resources/css/admin/AdminLTE.min.css',
+        'resources/css/admin/_all-skins.min.css',
+    ], 'public/css/admin.css');
+mix.js('resources/js/admin/adminlte.min.js', 'public/js');
+mix.copyDirectory('resources/fonts', 'public/fonts');
