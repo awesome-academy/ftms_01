@@ -93,6 +93,13 @@ $(document).ready(function () {
             }
         });
     });
+    $('.delete').click(function () {
+        var result = confirm('Bạn có muốn xóa?');
+        if (result) {
+            return true;
+        }
+        return false;
+    });
 });
 
 /***/ })
