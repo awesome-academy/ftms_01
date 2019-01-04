@@ -11,6 +11,7 @@ class Subject extends Model
         'name',
         'status'
     ];
+    protected $appends = ['status_custom'];
 
     public function users()
     {
@@ -30,5 +31,22 @@ class Subject extends Model
     public function course()
     {
         return $this->belongsTo(Course::class);
+    }
+
+    public function setStatusAttribute($vale)
+    {
+        $this->attributes['status'] = $vale;
+    }
+
+    public function getStatusCustomAttribute()
+    {
+        if ($this->status == config('admin.subject_ready'))
+        {
+            return trans('message.subject_ready');
+        }
+        if($this->status == config('admin.subject_end'))
+        {
+            return trans('message.subject_end');
+        }
     }
 }

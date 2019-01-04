@@ -93,6 +93,24 @@ $(document).ready(function () {
             }
         });
     });
+    var counter = 2;
+    $('#add-text-subject').click(function (e) {
+        e.preventDefault();
+        var textNew = $(document.createElement('div')).attr({ "id": "box_group" + counter });
+        textNew.after().html('<div class="form-group">\n                <label>T\xEAn ch\u1EE7 \u0111\u1EC1</label>\n                <input required type="text" class="form-control" name="name' + counter + '" placeholder ="T\xEAn ch\u1EE7 \u0111\u1EC1">\n                <label>N\u1ED9i dung</label>\n                <textarea rows="5" class="form-control" name="content' + counter + '" required></textarea>\n            </div>');
+        counter++;
+        textNew.appendTo('#box_group');
+        $('#counter').val(counter - 1);
+    });
+    $('#delete-text-subject').click(function (e) {
+        e.preventDefault();
+        if (counter == 2) {
+            alert("Bạn không thể xóa!");
+            return false;
+        }
+        counter--;
+        $("#box_group" + counter).remove();
+    });
     $('.delete').click(function () {
         var result = confirm('Bạn có muốn xóa?');
         if (result) {

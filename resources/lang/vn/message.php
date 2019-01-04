@@ -67,5 +67,11 @@
         'delet' => 'Xóa',
         'view' => 'Xem',
         'list_course' => 'Danh sách khóa học',
+        'subject' => 'Chủ đề',
+        'name_subject' => 'Tên chủ đề',
+        'content' => 'Nội dung',
+        'subject_ready' => 'Sẵn sàng',
+        'subject_end' => 'Kết thúc',
+        'list' => 'Danh sách',
         'back' => 'Trở về'
     ];

@@ -191,3 +191,9 @@ svg {
 .col-action{
     width: 200px;
 }
+.col-name-subject{
+    width: 450px;
+}
+.right{
+    float: right;
+}
