@@ -197,3 +197,7 @@ svg {
 .right{
     float: right;
 }
+.option-course{
+    float: right;
+    width: 250px;
+}

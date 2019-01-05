@@ -29,4 +29,10 @@ Route::group(['prefix' => 'admin'], function(){
     Route::get('supervisor', 'Admin\AdminController@showSupervisor')->name('supervisor.show');
     Route::resource('course', 'Admin\CourseController');
     Route::resource('subject', 'Admin\SubjectController');
+    Route::get('show-trainee', 'Admin\AddTraineeToCourseController@index')->name('show-trainee');
+    Route::post('post-trainee', 'Admin\AddTraineeToCourseController@show');
+    Route::get('add-trainee', 'Admin\AddTraineeToCourseController@create')->name('trainee.create');
+    Route::post('show-subject', 'Admin\AddTraineeToCourseController@showSubject');
+    Route::post('add-trainee', 'Admin\AddTraineeToCourseController@stores')->name('trainee.stores');
+    Route::get('delete-trainee/{uer}/{course}', 'Admin\AddTraineeToCourseController@deleteTrainee')->name('trainee.destroy');
 });

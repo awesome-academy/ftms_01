@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>@yield('title')</title>
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     {{ Html::style('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic') }}
     {{ Html::style(asset('css/admin.css')) }}
 </head>
@@ -65,6 +66,9 @@
                                 <ul class="treeview-menu">
                                     <li>
                                         <a href="{{ route('course.index') }}"><i class="fa fa-circle-o"></i> @lang('message.list_course')</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('show-trainee') }}"><i class="fa fa-circle-o"></i> @lang('message.list_trainee_course')</a>
                                     </li>
                                 </ul>
                             </li>
