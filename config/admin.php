@@ -22,5 +22,7 @@
         'read' => 1,
         'close' => 2,
         'report' => 3,
-        'paginate_history' => 10
+        'paginate_history' => 10,
+        'paginate_calendar' => 10,
+        'count' => 1
     ];

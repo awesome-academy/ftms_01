@@ -70,8 +70,11 @@
                                     <li>
                                         <a href="{{ route('show-trainee') }}"><i class="fa fa-circle-o"></i> @lang('message.list_trainee_course')</a>
                                     </li>
-                                     <li>
+                                    <li>
                                         <a href="{{ route('suppervisor.index') }}"><i class="fa fa-circle-o"></i> @lang('message.list_suppervisor_course')</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('calendar.index') }}"><i class="fa fa-circle-o"></i> @lang('message.calendar')</a>
                                     </li>
                                 </ul>
                             </li>

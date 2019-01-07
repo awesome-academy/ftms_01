@@ -55,10 +55,9 @@
         'image' => 'Hình Ảnh',
         'name_course' => 'Tên khóa học',
         'calendar' => 'Lịch học',
-        'date' => 'Thứ',
         'hour' => 'Giờ học',
-        'hour_start' => 'Bắt đầu',
-        'hour_end' => 'Kết thúc',
+        'hour_start' => 'Giờ bắt đầu',
+        'hour_end' => 'Giờ kết thúc',
         'error_date' => 'Ngày kết thúc phải lớn hơn ngày bắt đầu!',
         'start' =>  'Bắt đầu',
         'ready' => 'Sẵn sàng',
@@ -113,4 +112,6 @@
         'list_report' => 'Danh sách báo cáo',
         'complete' => 'Đã hoàn thành',
         'read' => 'Đọc',
+        'calendar' => 'Lịch học',
+        'date_study' => 'Thứ'
     ];
