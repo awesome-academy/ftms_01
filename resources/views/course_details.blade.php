@@ -17,7 +17,7 @@
                     <h2>@lang('message.list_trainee_course')</h2>
                     @foreach($member as $members)
                         <h4>
-                            <a href="">{{ $members->name }}</a>
+                            <a href="{{ route('profile.show', $members->id) }}">{{ $members->name }}</a>
                         </h4>
                     @endforeach()
                </div>

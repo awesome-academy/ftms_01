@@ -10,5 +10,6 @@ return [
     'exists' => ':attribute không hợp lệ.',
     'file' => ':attribute phải là một file hợp lệ.',
     'unique' => 'Thuộc tính đã tồn tại',
-    'max' => 'Quá kích thước cho phép'
+    'max' => 'Quá kích thước cho phép',
+    'numeric' => ':attribute chỉ chứa kí tự sô'
 ];

@@ -102,5 +102,9 @@
         'course_detail' => 'Chi tiết khóa học',
         'subjec_course' => 'Chủ đề của bài học',
         'report' => 'Báo Cáo',
-        'content_report' => 'Nội dung báo cáo'
+        'content_report' => 'Nội dung báo cáo',
+        'phone' => 'Số điện thoại',
+        'address' => 'Địa chỉ',
+        'edit_profile' => 'Chỉnh sửa hồ sơ',
+        'close' => 'Đóng'
     ];

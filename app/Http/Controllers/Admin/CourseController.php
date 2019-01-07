@@ -9,7 +9,7 @@ use App\Models\Course;
 use App\Models\Subject;
 use App\Models\User;
 use App\Http\Requests\CourseRequest;
-use App\Models\Upload;
+use App\Upload;
 
 class CourseController extends Controller
 {

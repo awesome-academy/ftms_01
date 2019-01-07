@@ -48,14 +48,33 @@ h5 {
 	font-size: 20px;
 }
 
-.img-user{
+input[type=number]::-webkit-inner-spin-button {
+  opacity: 0;
+}
+
+.img-user {
 		width: 40px;
 		height: 40px;
 }
 
-.img-course{
+.img-course {
 	height: 250px;
 	width: 300px;
+}
+
+.error{
+	color: red;
+}
+
+.img-profile {
+	height: 250px;
+	width: 250px;
+	margin-left: 160px;
+}
+
+.box-profile {
+	width: 250px;
+	margin-left: 160px;
 }
 
 h6 {
