@@ -44,7 +44,8 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li><a href="#" id="content-dropdown">@lang('message.profile')</a></li>
-                        <li><a class="dropdown-item" href="{{ route('logout') }}" id="logout">
+                        <li>
+                            <a class="dropdown-item" href="{{ route('logout') }}" id="logout">
                                 @lang('message.logout')
                             </a>
                             {{ Form::open(['route' => 'logout', 'id' => 'logout-form', 'display' => 'none']) }}
@@ -54,10 +55,10 @@
                 </div>
             </div>
             <ul class="main-menu">
-                <li class="active"><a href="index.html">@lang('message.home')</a></li>
+                <li class="active"><a href="{{ route('home') }}">@lang('message.home')</a></li>
                 <li class="dropdown"><a id="dropdownMenu1" data-toggle="dropdown" href="about.html">@lang('message.my_course')<span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="#" id="content-dropdown">@lang('message.course_study')</a></li>
+                        <li><a href="{{ route('coures_study') }}" id="content-dropdown">@lang('message.course_study')</a></li>
                         <li><a href="#">@lang('message.course_end')</a></li>
                     </ul>
                 </li>
@@ -65,11 +66,6 @@
             </ul>
         </div>
     </nav>
-    <section>
-        <div class="content">
-            {{ Html::image(asset('storage/image/banner.jpg')) }}
-        </div>
-    </section>
     <div>
         @yield('content')
     </div>

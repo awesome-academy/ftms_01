@@ -3727,6 +3727,11 @@ h5 {
 		height: 40px;
 }
 
+.img-course{
+	height: 250px;
+	width: 300px;
+}
+
 h6 {
 	font-size: 14px;
 }

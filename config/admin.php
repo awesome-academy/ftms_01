@@ -14,5 +14,7 @@
         'subject_ready' => 1,
         'subject_end' => 0,
         'phone' => '(+88) 111 555 666',
-        'email' => 'admin@gmail.com'
+        'email' => 'admin@gmail.com',
+        'paginate_course_public' => 6,
+        'rows_subject' => 30,
     ];
