@@ -43,6 +43,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
     Route::resource('calendar', 'Admin\CalendarController');
     Route::get('show-course', 'Admin\CourseController@showCourse')->name('show-course');
     Route::get('show-progress/{id}', 'Admin\CourseController@showProgress')->name('show-progress');
+    Route::delete('delete-member/{id}', 'Admin\AdminController@deleteMember')->name('delete-member');
+    Route::delete('delete-suppervisor/{id}', 'Admin\AdminController@deleteSuppervisor')->name('delete-suppervisor');
 });
 
 Route::get('course-study', 'CourseStudyController@index')->name('coures_study');
