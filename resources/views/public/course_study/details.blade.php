@@ -1,3 +1,4 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 @extends('layouts.public_default')
 @section('title', $course->name)
 @section('content')
@@ -31,7 +32,7 @@
                         <h3>
                             {{ Form::open(['method' => 'patch', 'route' => 'close-subject']) }}
                                 @if($subjects->pivot->status == config('admin.subject_ready'))
-                                    <a href="{{ route('subject.details', $subjects->id) }}">{{ $subjects->name }}</a>
+                                    <a href="{{ route('subject.details', $subjects->id) }}" id="read">{{ $subjects->name }}</a>
                                     {{Form::hidden('subject_id', $subjects->id, ['id' => 'subject_id'])}}
                                     <span class="subject-style">@lang('message.subject_ready')</span>
                                     {{ Form::submit(trans('message.subject_end'), ['class' => ' btn btn-danger close-subjet', 'id' => 'close']) }}

@@ -49,4 +49,9 @@ class Subject extends Model
             return trans('message.subject_end');
         }
     }
+
+    public function histories()
+    {
+        return $this->hasMany(History::class);
+    }
 }

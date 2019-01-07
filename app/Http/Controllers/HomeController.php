@@ -35,7 +35,7 @@ class HomeController extends Controller
     {
         $course = Course::findOrFail($id);
         $subject = User::findOrFail(Auth::user()->id)->subjects()->wherePivot('course_id', $id)->paginate(config('admin.paginate_subject'));
-        $member = $course->users()->where('users.id', '!=', Auth::user()->id)->get();
+        $member = $course->users()->where('users.id', '!=', Auth::user()->id)->get()->groupBy('pivot.user_id');
 
         return view('course_details', compact('subject', 'course', 'member'));
     }
