@@ -25,5 +25,4 @@
         'paginate_history' => 10,
         'paginate_calendar' => 10,
         'count' => 1,
-        'progress' => 100
     ];

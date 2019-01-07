@@ -25,8 +25,8 @@
                     {{ Form::select('user_id[]', $user->pluck('name', 'id'), null, ['class' => 'form-control', 'multiple' => 'multiple', 'required']) }}
                 </div>
                 <div class="form-group">
-                    {{ Form::submit(trans('message.create'), ['class' => 'btn btn-primary']) }}
                     <a href="{{ route('suppervisor.index') }}" class="btn btn-success">@lang('message.back') </a>
+                    {{ Form::submit(trans('message.create'), ['class' => 'btn btn-primary']) }}
                 </div>
             {{ Form::close() }}
         </div>

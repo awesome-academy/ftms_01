@@ -32,9 +32,8 @@
                 {{ Form::select('status', [ config('admin.subject_end') => trans('message.subject_end'), config('admin.subject_ready') => trans('message.subject_ready')], $subject->status, ['class' => 'form-control'])}}
             </div>
             <div class="form-group">
-                {{ Form::submit(trans('message.edit'), ['class' => 'btn btn-primary']) }}
-                 <a href="{{ route('subject.show', $subject->id) }}" class="btn btn-danger">@lang('message.back')</a>
-                <a href="{{ route('subject.index') }}" class="btn btn-success">@lang('message.list')</a>
+                <a href="{{ route('subject.index') }}" class="btn btn-success">@lang('message.back')</a>
+                {{ Form::submit(trans('message.save'), ['class' => 'btn btn-primary']) }}
             </div>
         {{ Form::close() }}
     </div>

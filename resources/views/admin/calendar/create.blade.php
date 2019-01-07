@@ -34,8 +34,8 @@
             </div>
             <br>
             <div class="form-group">
+                <a href="{{ route('calendar.index') }}" class="btn btn-success">@lang('message.back')</a>
                 {{ Form::submit(trans('message.create'), ['class' => 'btn btn-primary']) }}
-                <a href="{{ route('calendar.index') }}" class="btn btn-success">@lang('message.list')</a>
             </div>
         {{ Form::close() }}
     </div>
