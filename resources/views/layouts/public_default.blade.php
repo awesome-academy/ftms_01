@@ -60,7 +60,7 @@
                     <ul class="dropdown-menu">
                         <li><a href="{{ route('coures_study') }}" id="content-dropdown">@lang('message.course_study')</a></li>
                         <li><a href="{{ route('show-calendar') }}">@lang('message.calendar')</a></li>
-                        <li><a href="#">@lang('message.course_end')</a></li>
+                        <li><a href="{{ route('course-end') }}">@lang('message.course_end')</a></li>
                     </ul>
                 </li>
                 <li><a href="{{ route('show-report') }}">@lang('message.list_report')</a></li>
