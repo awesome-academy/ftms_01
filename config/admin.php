@@ -12,5 +12,7 @@
         'paginate_subject' => 10,
         'rows' => 5,
         'subject_ready' => 1,
-        'subject_end' => 0
+        'subject_end' => 0,
+        'phone' => '(+88) 111 555 666',
+        'email' => 'admin@gmail.com'
     ];
