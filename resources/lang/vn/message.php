@@ -113,5 +113,6 @@
         'complete' => 'Đã hoàn thành',
         'read' => 'Đọc',
         'calendar' => 'Lịch học',
-        'date_study' => 'Thứ'
+        'date_study' => 'Thứ',
+        'course_detail' => 'Chi tiết khóa học'
     ];

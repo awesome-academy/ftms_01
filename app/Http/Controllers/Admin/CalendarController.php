@@ -121,7 +121,6 @@ class CalendarController extends Controller
         try
         {
             CourseCalendar::findOrFail($id)->delete();
-
             $request->session()->flash(trans('message.success'), trans('message.notification_success'));
         } catch (Exception $e) {
             $request->session()->flash(trans('message.fails'), trans('message.notification_fails'));
