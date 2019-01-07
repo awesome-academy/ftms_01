@@ -12,7 +12,7 @@ class Report extends Model
         'content',
         'status'
     ];
-
+    protected $date = ['created_at_custom'];
     public function user()
     {
         return $this->belongsTo(User::class);
