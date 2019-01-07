@@ -142,4 +142,25 @@ class CourseController extends Controller
 
         return back();
     }
+
+    public function showCourse()
+    {
+        $courses = Course::where('status', config('admin.course_start'))->paginate(config('admin.paginate_course'));
+
+        return view('admin.progress.index', compact('courses'));
+    }
+
+    public function showProgress($id)
+    {
+        $progress = [];
+        $course = Course::findOrFail($id);
+        $users = $course->users()->get()->groupBy('pivot.user_id');
+        foreach ($users as $user) {
+            $subject = count($user->first()->subjects()->wherePivot('course_id', $course->id)->get());
+            $subjectComplete = count($user->first()->subjects()->wherePivot('course_id', $course->id)->wherePivot('status', 0)->get());
+            $progress[$user->first()->id] = round(($subjectComplete/$subject)*config('admin.progress'));
+        }
+
+        return view('admin.progress.show_progress', compact('users', 'progress'));
+    }
 }
