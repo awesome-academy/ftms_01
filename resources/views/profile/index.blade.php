@@ -72,7 +72,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     {{ Form::button(trans('message.close'), ['class' => 'btn btn-secondary', 'data-dismiss' => 'modal']) }}
-                                    {{ Form::submit(trans('message.edit'), ['class' => 'btn btn-primary a']) }}
+                                    {{ Form::submit(trans('message.save'), ['class' => 'btn btn-primary a']) }}
                                 </div>
                             {{ Form::close() }}
                         </div>
