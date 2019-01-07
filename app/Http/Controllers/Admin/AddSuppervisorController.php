@@ -42,7 +42,7 @@ class AddSuppervisorController extends Controller
             $request->session()->flash(trans('message.fails'), trans('message.notification_fails'));
         }
 
-        return back();
+        return redirect()->route('suppervisor.index');
     }
 
     public function delete($user, $course, Request $request)

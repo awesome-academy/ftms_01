@@ -100,9 +100,7 @@
             </section>
         </aside>
         <div class="content-wrapper">
-            <section class="content-header">
-                <h1>@lang('message.dashboard')</h1>
-            </section>
+
             <div>
                 @yield('content')
             </div>

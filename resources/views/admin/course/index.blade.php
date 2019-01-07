@@ -1,9 +1,12 @@
 @extends('layouts.default_admin')
 @section('title', trans('message.course'))
 @section('content')
+    <section class="content-header">
+        <h1>@lang('message.course')</h1>
+    </section>
     <div class="box">
         <div class="box-header">
-            <h3 class="box-title">@lang('message.course')
+            <h3 class="box-title">
                 <a href="{{route('course.create')}}" class="btn btn-primary">
                     <i class="fa fa-paint-brush"></i>@lang('message.create')
                 </a>

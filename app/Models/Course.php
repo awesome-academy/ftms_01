@@ -19,7 +19,7 @@ class Course extends Model
 
     public function subjects()
     {
-        return $this->hasMany(Subject::class)->withPivot('status');
+        return $this->hasMany(Subject::class);
     }
 
     public function users()

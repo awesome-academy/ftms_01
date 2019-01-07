@@ -1,9 +1,9 @@
 @extends('layouts.public_default')
-@section('title', trans('message.list_report'))
+@section('title', trans('message.content_report'))
 @section('content')
     <section class="courses-section spad">
         <div class="container">
-            <h2>@lang('message.list_report')</h2>
+            <h2>@lang('message.content_report')</h2>
             <table class="table table-bordered">
                 <thead>
                     <tr>
