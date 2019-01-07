@@ -22,4 +22,9 @@ class Report extends Model
     {
         return $this->belongsTo(Subject::class);
     }
+
+    public function getCreatedAtCustomAttribute()
+    {
+        return $this->created_at->format('d-m-Y H:i:s');
+    }
 }

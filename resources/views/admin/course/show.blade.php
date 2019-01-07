@@ -30,7 +30,7 @@
                         <tr>
                             <th class="name-course">@lang('message.date_study')</th>
                             <th class="col-img-course">@lang('message.hour_start')</th>
-                            <th class="col-img-course">@lang('message.hour_end')</th>
+                        <th class="col-img-course">@lang('message.hour_end')</th>
                         </tr>
                     </thead>
                     <tbody>
