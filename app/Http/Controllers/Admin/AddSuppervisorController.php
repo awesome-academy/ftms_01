@@ -24,7 +24,7 @@ class AddSuppervisorController extends Controller
 
     public function create()
     {
-        $course = Course::all();
+        $course = Course::where('status', '!=', config('admin.course_end'))->get();
         $user = User::where('role', config('admin.supervisor'))->get();
         return view('admin.course.suppervisor.create', compact('course', 'user'));
     }

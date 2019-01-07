@@ -48,6 +48,10 @@ class Subject extends Model
         {
             return trans('message.subject_end');
         }
+        if ($this->status == config('admin.subject_start'))
+        {
+            return trans('message.subject_start');
+        }
     }
 
     public function histories()

@@ -16,12 +16,12 @@
         @endif
         <div class="box-body course-box">
             {{ Form::open(['route' => 'suppervisor.stores']) }}
-
                 <div class="form-group">
                     {{ Form::label(trans('message.name_course')) }}
                     {{ Form::select('course_id', $course->pluck('name', 'id'), null, ['class' => 'form-control', 'id' => 'course_id']) }}
                 </div>
                 <div class="form-group">
+                    {{ Form::label(trans('message.choose_suppervisor')) }}
                     {{ Form::select('user_id[]', $user->pluck('name', 'id'), null, ['class' => 'form-control', 'multiple' => 'multiple', 'required']) }}
                 </div>
                 <div class="form-group">

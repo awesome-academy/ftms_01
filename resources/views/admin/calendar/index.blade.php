@@ -25,20 +25,20 @@
              <table id="example2" class="table table-bordered table-hover">
                 <thead>
                     <tr>
+                        <th class="col-name-subject">@lang('message.name_course')</th>
                         <th class="name-course">@lang('message.date_study')</th>
                         <th class="col-name-subject">@lang('message.hour_start')</th>
                         <th class="col-name-subject">@lang('message.end')</th>
-                        <th class="col-name-subject">@lang('message.name_course')</th>
                         <th class="col-action">@lang('message.action')</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach($calendars as $calendar)
                         <tr>
+                            <td>{{ $calendar->course->name }}</td>
                             <td>{{ $calendar->day }}</td>
                             <td>{{ $calendar->hour_start }}</td>
                             <td>{{ $calendar->hour_end }}</td>
-                            <td>{{ $calendar->course->name }}</td>
                             <td>
                                 @if(Auth::user()->role == config('admin.admin'))
                                     <div class="col-md-5">

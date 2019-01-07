@@ -47,9 +47,9 @@
                                 <div class="col-md-2">
                                     @if(Auth::user()->role == config('admin.supervisor'))
                                     @else
-                                    {{Form::open(['route' => ['delete-suppervisor', $supervisors->id], 'method' => 'delete'])}}
-                                            {{Form::button('<i class="fa fa-trash-o"></i>', ['class' => 'btn btn-danger delete', 'type' => 'submit', 'title' => trans('message.delete')])}}
-                                        {{Form::close()}}
+                                    {{ Form::open(['route' => ['delete-suppervisor', $supervisors->id], 'method' => 'delete']) }}
+                                            {{ Form::button('<i class="fa fa-trash-o"></i>', ['class' => 'btn btn-danger delete', 'type' => 'submit', 'title' => trans('message.delete')]) }}
+                                        {{ Form::close() }}
                                     @endif
                                 </div>
                             </td>
