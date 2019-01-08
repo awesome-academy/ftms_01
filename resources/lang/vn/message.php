@@ -81,5 +81,21 @@
         'management_suppervisor' => 'Quản lý suppervisor',
         'name_suppervisor' => 'Tên suppervisor',
         'add_trainee_to_course' => 'Thêm học viên vào lớp học',
-        'add_suppervisor_to_course' => 'Thêm suppervisor vào lớp học'
+        'add_suppervisor_to_course' => 'Thêm suppervisor vào lớp học',
+        'working_time' => 'Giờ làm việc',
+        'place' => 'Địa điểm',
+        'time_working' => 'Thứ 2 - Thứ 6: 7:45 AM - 16:45 PM',
+        'place_working' => '16 - Lý Thường Kiệt, Đà Nẵng',
+        'my_course' => 'Khóa học của tôi',
+        'course_end' => 'Khóa học đã hoàn thành',
+        'profile' => 'Hồ sơ',
+        'course_study' => 'Đang học',
+        'history' => 'Lịch sử',
+        'contact' => 'Liên Hệ',
+        'course_current' => 'Khóa học hiện tại',
+        'coppyright' => 'Coppyright',
+        'all_template' => 'All rights reserved | This template is made with',
+        'colorlib' => 'Colorlib',
+        'by' => 'By',
+        'system_trainer' => 'Hệ thống đào tạo'
     ];

@@ -1,20 +1,25 @@
-@extends('layouts.app')
+@extends('layouts.public_default')
+@section('title', trans('message.system_trainer'))
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">@lang('message.dashboard')</div>
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
+    <section class="courses-section spad">
+        <div class="container">
+            <div class="section-title text-center">
+                <h3>@lang('message.course_current')</h3>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 course-item">
+                    <div class="course-thumb">
+                        {{ Html::image(asset('')) }}
+                        <div class="course-cat">
+                            <span></span>
                         </div>
-                    @endif
-                    @lang('message.confirm_logout')
+                    </div>
+                    <div class="course-info">
+                        <h4></h4>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
-@endsection
+    </section>
+@endsection()
+

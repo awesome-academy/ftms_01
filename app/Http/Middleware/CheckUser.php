@@ -18,6 +18,7 @@ class CheckUser
     {
         if(Auth::check() && Auth::user()->role == config('admin.member'))
         {
+            Auth::logout();
             return redirect()->route('login');
         } else {
             return $next($request);
