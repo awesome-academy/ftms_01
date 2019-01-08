@@ -97,5 +97,10 @@
         'all_template' => 'All rights reserved | This template is made with',
         'colorlib' => 'Colorlib',
         'by' => 'By',
-        'system_trainer' => 'Hệ thống đào tạo'
+        'system_trainer' => 'Hệ thống đào tạo',
+        'course_start' => 'Khóa học đang hoạt động',
+        'course_detail' => 'Chi tiết khóa học',
+        'subjec_course' => 'Chủ đề của bài học',
+        'report' => 'Báo Cáo',
+        'content_report' => 'Nội dung báo cáo'
     ];
