@@ -33,17 +33,17 @@
             <div class="nav-right">
                <div class="dropdown">
                     <a id="dropdownMenu1" data-toggle="dropdown" >
-                        @if((Auth::user()->profile) == null)
+                        @if(Auth::user()->profile == null)
                             {{ Html::image(asset('storage/image/abstract-user-flat-3.svg'), '', ['class' => 'img-user']) }}
                             {{ Auth::user()->name }}
                         @else
-                            {{ Html::image(asset('storage/image/'.Auth::user()->profile->image), '', ['class' => 'img-circle img-user']) }}
+                            {{ Html::image(asset('storage/image/avatar/'.Auth::user()->profile->image), '', ['class' => 'img-circle img-user']) }}
                             {{ Auth::user()->name }}
                         @endif
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a href="#" id="content-dropdown">@lang('message.profile')</a></li>
+                        <li><a href="{{ route('myprofile.show', Auth::user()->id) }}" id="content-dropdown">@lang('message.profile')</a></li>
                         <li>
                             <a class="dropdown-item" href="{{ route('logout') }}" id="logout">
                                 @lang('message.logout')
