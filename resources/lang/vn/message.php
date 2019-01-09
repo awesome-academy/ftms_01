@@ -70,7 +70,7 @@
         'subject' => 'Chủ đề',
         'name_subject' => 'Tên chủ đề',
         'content' => 'Nội dung',
-        'subject_ready' => 'Sẵn sàng',
+        'subject_ready' => 'Đang học',
         'subject_end' => 'Kết thúc',
         'list' => 'Danh sách',
         'back' => 'Trở về',
@@ -111,4 +111,5 @@
         'progress_current' => 'Tiến độ hiện tại',
         'date' => 'Ngày',
         'list_report' => 'Danh sách báo cáo',
+        'complete' => 'Đã hoàn thành'
     ];

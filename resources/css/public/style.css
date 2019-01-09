@@ -77,6 +77,10 @@ input[type=number]::-webkit-inner-spin-button {
 	margin-left: 160px;
 }
 
+.subject-style {
+	font-size: 13px;
+}
+
 h6 {
 	font-size: 14px;
 }

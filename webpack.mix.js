@@ -46,6 +46,7 @@ mix.scripts([
     'resources/js/public/masonry.pkgd.min.js',
     'resources/js/public/owl.carousel.min.js',
     ], 'public/js/public/main.js');
+mix.js('resources/js/public/public.js', 'public/js/public');
 mix.copyDirectory('resources/icon-fonts', 'public/icon-fonts');
 mix.copy('resources/css/public/bootstrap.min.css', 'public/css');
 mix.copy('resources/js/bootstrap.min.js', 'public/js');
