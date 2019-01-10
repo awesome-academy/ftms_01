@@ -27,7 +27,7 @@
                 <ul class="sidebar-menu" data-widget="tree">
                     <li class="header">@lang('message.main_navigation')</li>
                     <li class="">
-                        <a href="">
+                        <a href="{{ route('admin') }}">
                             <i class="fa fa-dashboard"></i> <span>@lang('message.dashboard')</span>
                         </a>
                     </li>
@@ -110,6 +110,7 @@
     </div>
     {{ Html::script(asset('js/jquery.js')) }}
     {{ Html::script(asset('js/adminlte.min.js')) }}
+    {{ Html::script(asset('js/bootstrap.min.js')) }}
     {{ Html::script(asset('js/styles.js')) }}
 </body>
 </html>

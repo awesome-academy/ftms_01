@@ -27,7 +27,11 @@
                         <p>@lang('message.phone') : <strong>{{ !$user->profile ? '' : $user->profile->phone }}</strong></p>
                         <p>@lang('message.address') : <strong>{{ !$user->profile ? '' : $user->profile->address }}</strong></p>
                         <a href="" class="btn btn-primary show-modal" data-toggle="modal" data-target="#exampleModal">@lang('message.edit_profile')</a>
-                        <a href="{{ route('home') }}" class="btn btn-primary">@lang('message.back')</a>
+                        @if(Auth::user()->role != config('admin.member'))
+                            <a href="{{ route('admin') }}" class="btn btn-primary">@lang('message.back')</a>
+                        @else
+                            <a href="{{ route('home') }}" class="btn btn-primary">@lang('message.back')</a>
+                        @endif
                     </div>
                 </div>
                 <div class="col-md-3"></div>
