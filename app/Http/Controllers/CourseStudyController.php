@@ -26,7 +26,6 @@ class CourseStudyController extends Controller
     {
         $course = Course::findOrFail($id);
         $subject = User::findOrFail(Auth::user()->id)
-<<<<<<< 174b4668b8b180b4eaeec63034dbc1296eb68430
             ->subjects()->wherePivot('course_id', $id)
             ->paginate(config('admin.paginate_subject'));
         $subjectComplete = User::findOrFail(Auth::user()->id)
@@ -35,11 +34,6 @@ class CourseStudyController extends Controller
             ->wherePivot('status', config('admin.subject_end'))
             ->get();
         $progress = round((count($subjectComplete)/count($subject)*config('admin.progress')));
-=======
-            ->subjects()
-            ->wherePivot('course_id', $id)
-            ->paginate(config('admin.paginate_subject'));
->>>>>>> Close subject
 
         return view('public.course_study.details', compact('subject','course', 'progress'));
     }
