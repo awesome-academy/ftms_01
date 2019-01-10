@@ -71,11 +71,19 @@ class CourseStudyController extends Controller
             $input = $request->all();
             $input['user_id'] = Auth::user()->id;
             Report::create($input);
+<<<<<<< 5edc0c55d046e644f400bf7429917733dbc08a51
             History::create([
                 'user_id' => Auth::user()->id,
                 'subject_id' => $request->subject_id,
                 'type' => config('admin.report')
             ]);
+=======
+                History::create([
+                    'user_id' => Auth::user()->id,
+                    'subject_id' => $request->subject_id,
+                    'type' => config('admin.report')
+                ]);
+>>>>>>> history
 
             $request->session()->flash(trans('message.success'), trans('message.notification_success'));
         } catch (Exception $e) {

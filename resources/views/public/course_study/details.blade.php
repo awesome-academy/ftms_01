@@ -1,3 +1,4 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 @extends('layouts.public_default')
 @section('title', $course->name)
 @section('content')
