@@ -106,5 +106,9 @@
         'phone' => 'Số điện thoại',
         'address' => 'Địa chỉ',
         'edit_profile' => 'Chỉnh sửa hồ sơ',
-        'close' => 'Đóng'
+        'close' => 'Đóng',
+        'progress' => 'Tiến độ',
+        'progress_current' => 'Tiến độ hiện tại',
+        'date' => 'Ngày',
+        'list_report' => 'Danh sách báo cáo',
     ];

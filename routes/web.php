@@ -49,3 +49,5 @@ Route::get('show-course/{id}', 'HomeController@show')->name('course.show');
 Route::get('profile/{id}', 'UserController@show')->name('profile.show');
 Route::get('my-profile/{id}', 'UserController@index')->name('myprofile.show');
 Route::patch('update-profile/{id}', 'UserController@update')->name('profile.update');
+Route::get('show-report', 'CourseStudyController@showReport')->name('show-report');
+Route::post('report', 'CourseStudyController@report')->name('report');

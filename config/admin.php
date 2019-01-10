@@ -17,4 +17,5 @@
         'email' => 'admin@gmail.com',
         'paginate_course_public' => 6,
         'rows_subject' => 30,
+        'paginate_report' => 10
     ];

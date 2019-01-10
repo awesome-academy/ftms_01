@@ -62,7 +62,7 @@
                         <li><a href="#">@lang('message.course_end')</a></li>
                     </ul>
                 </li>
-                <li><a href="#">@lang('message.history')</a></li>
+                <li><a href="{{ route('show-report') }}">@lang('message.list_report')</a></li>
             </ul>
         </div>
     </nav>
