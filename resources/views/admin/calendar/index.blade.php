@@ -1,12 +1,9 @@
 @extends('layouts.default_admin')
 @section('title', trans('message.calendar'))
 @section('content')
-    <section class="content-header">
-        <h1>@lang('message.calendar')</h1>
-    </section>
     <div class="box">
         <div class="box-header">
-            <h3 class="box-title">
+            <h3 class="box-title">@lang('message.calendar')
                 <a href="{{ route('calendar.create') }}" class="btn btn-primary">
                     <i class="fa fa-paint-brush"></i>@lang('message.create')
                 </a>
