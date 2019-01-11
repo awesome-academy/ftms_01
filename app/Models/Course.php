@@ -19,12 +19,12 @@ class Course extends Model
 
     public function subjects()
     {
-        return $this->hasMany(Subject::class);
+        return $this->hasMany(Subject::class)->withPivot('status');
     }
 
     public function users()
     {
-        return $this->belongsToMany(User::class, 'regist_course');
+        return $this->belongsToMany(User::class, 'regist_course')->withPivot('status');
     }
 
     public function courseUsers()

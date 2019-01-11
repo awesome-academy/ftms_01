@@ -94,6 +94,7 @@
 {{ Html::script(asset('js/jquery.js')) }}
 {{ Html::script(asset('js/styles.js')) }}
 {{ Html::script(asset('js/public/main.js')) }}
+{{ Html::script(asset('js/public/public.js')) }}
 {{ Html::script(asset('js/bootstrap.min.js')) }}
 </body>
 </html>

@@ -15,7 +15,7 @@ class Subject extends Model
 
     public function users()
     {
-        return $this->belongsToMany(User::class, 'regist_course');
+        return $this->belongsToMany(User::class, 'regist_course')->withPivot('status');
     }
 
     public function content()

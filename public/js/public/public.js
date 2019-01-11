@@ -68,8 +68,25 @@
 /***/ 46:
 /***/ (function(module, exports, __webpack_require__) {
 
-(function webpackMissingModule() { throw new Error("Cannot find module \"/home/nguyentienphi/ftms_01/resources/js/public/public.js\""); }());
+module.exports = __webpack_require__(47);
 
+
+/***/ }),
+
+/***/ 47:
+/***/ (function(module, exports) {
+
+$(document).ready(function () {
+    $('.close-subjet').click(function () {
+        var result = confirm('Bạn có muốn kết thúc chủ đề?');
+        if (result) {
+            return true;
+        } else {
+            return false;
+        }
+    });
+    $('.progress-bar').css('width', $('#progress_course').val() + '%').attr('aria-valuenow', valeur);
+});
 
 /***/ })
 

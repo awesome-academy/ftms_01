@@ -26,8 +26,14 @@ class CourseStudyController extends Controller
         $subject = User::findOrFail(Auth::user()->id)
                         ->subjects()->wherePivot('course_id', $id)
                         ->paginate(config('admin.paginate_subject'));
+        $subjectComplete = User::findOrFail(Auth::user()->id)
+                                ->subjects()
+                                ->wherePivot('course_id', $id)
+                                ->wherePivot('status', config('admin.subject_end'))
+                                ->get();
+        $progress = round((count($subjectComplete)/count($subject)*config('admin.progress')));
 
-        return view('public.course_study.details', compact('subject','course'));
+        return view('public.course_study.details', compact('subject','course', 'progress'));
     }
 
     public function SubjectDetails(Request $request, $id)
@@ -54,6 +60,24 @@ class CourseStudyController extends Controller
             $input = $request->all();
             $input['user_id'] = Auth::user()->id;
             Report::create($input);
+            $request->session()->flash(trans('message.success'), trans('message.notification_success'));
+        } catch (Exception $e) {
+            $request->session()->flash(trans('message.fails'), trans('message.notification_fails'));
+        }
+
+        return back();
+    }
+
+    public function CloseSubject(Request $request)
+    {
+         try
+        {
+            $user = User::findOrFail(Auth::user()->id);
+            $subject = $user->subjects()->wherePivot('subject_id', $request->subject_id)->get();
+            foreach ($subject as  $value) {
+                $value->pivot->status = config('admin.subject_end');
+                $value->pivot->save();
+            }
             $request->session()->flash(trans('message.success'), trans('message.notification_success'));
         } catch (Exception $e) {
             $request->session()->flash(trans('message.fails'), trans('message.notification_fails'));
