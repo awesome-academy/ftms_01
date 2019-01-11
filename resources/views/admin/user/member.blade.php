@@ -42,9 +42,9 @@
                                     {{ Form::button('<i class="fa fa-eye"></i>', ['class' => 'btn btn-success show-modal', 'data-toggle' => 'modal', 'data-target' => '#exampleModal'.$members->id, 'title' => trans('message.view')]) }}
                                 </div>
                                 <div class="col-md-2">
-                                    {{Form::open(['route' => ['delete-member', $members->id], 'method' => 'delete'])}}
-                                        {{Form::button('<i class="fa fa-trash-o"></i>', ['class' => 'btn btn-danger delete', 'type' => 'submit', 'title' => trans('message.delete')])}}
-                                    {{Form::close()}}
+                                    {{ Form::open(['route' => ['delete-member', $members->id], 'method' => 'delete']) }}
+                                        {{ Form::button('<i class="fa fa-trash-o"></i>', ['class' => 'btn btn-danger delete', 'type' => 'submit', 'title' => trans('message.delete')]) }}
+                                    {{ Form::close() }}
                                 </div>
                             </td>
                         </tr>
