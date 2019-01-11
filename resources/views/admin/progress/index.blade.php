@@ -1,11 +1,10 @@
 @extends('layouts.default_admin')
 @section('title', trans('message.progress'))
 @section('content')
+    <section class="content-header">
+        <h1>@lang('message.progress')</h1>
+    </section>
     <div class="box">
-        <div class="box-header">
-            <h3 class="box-title">@lang('message.progress')
-            </h3>
-        </div>
         <div class="box-body">
             <table id="example2" class="table table-bordered table-hover">
                 <thead>
