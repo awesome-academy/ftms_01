@@ -76,7 +76,11 @@ class CourseController extends Controller
      */
     public function show($id)
     {
-        //
+        $course = Course::findOrFail($id);
+        $subjects = $course->subjects()->paginate(config('admin.paginate_course'));
+        $calendars = $course->calendars()->get();
+
+        return view('admin.course.show', compact('subjects', 'calendars', 'course'));
     }
 
     /**
