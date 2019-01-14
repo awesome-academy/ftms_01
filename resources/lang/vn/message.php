@@ -115,5 +115,7 @@
         'calendar' => 'Lịch học',
         'date_study' => 'Thứ',
         'course_detail' => 'Chi tiết khóa học',
-        'save' => 'Tiến hành lưu'
+        'save' => 'Tiến hành lưu',
+        'course_end' => 'Khóa học đã hoàn thành',
+        'not_study' => 'Chưa học'
     ];

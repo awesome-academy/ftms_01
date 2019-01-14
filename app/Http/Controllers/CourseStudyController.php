@@ -10,6 +10,7 @@ use App\Models\Report;
 use App\Models\History;
 use Auth;
 use Session;
+use Illuminate\Pagination\Paginator;
 
 class CourseStudyController extends Controller
 {
@@ -126,5 +127,20 @@ class CourseStudyController extends Controller
         $calendars = $course->first()->calendars()->paginate(config('admin.paginate_calendar'));
 
         return view('public.calendar.index', compact('calendars'));
+    }
+
+    public function CourseEnd()
+    {
+        $courseEnds = Auth::user()->courses()->where('courses.status', config('admin.course_end'))->get()->groupBy('pivot.course_id');
+
+        return view('public.course_end.index', compact('courseEnds'));
+    }
+
+    public function CourseEndDetail($id)
+    {
+        $course = Course::findOrFail($id);
+        $subjects = Auth::user()->subjects()->wherePivot('course_id', $id)->paginate(config('admin.paginate_subject'));
+
+        return view('public.course_end.show', compact('subjects','course'));
     }
 }
