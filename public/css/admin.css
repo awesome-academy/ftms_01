@@ -201,3 +201,16 @@ svg {
     float: right;
     width: 250px;
 }
+.img-profile {
+    height: 250px;
+    width: 250px;
+    margin-left: 165px;
+}
+.box-profile {
+    width: 250px;
+    margin-left: 225px;
+    margin-top: 20px;
+}
+.profile-modal {
+    text-align: center;
+}
