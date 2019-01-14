@@ -21,8 +21,8 @@
                 {{ Form::time('hour_end', $calendar->hour_end, ['class' => 'form-control']) }}
             </div>
             <div class="form-group">
-                {{ Form::submit(trans('message.edit'), ['class' => 'btn btn-primary']) }}
                 <a href="{{ route('calendar.index') }}" class="btn btn-danger">@lang('message.back')</a>
+                {{ Form::submit(trans('message.save'), ['class' => 'btn btn-primary']) }}
             </div>
         {{ Form::close() }}
     </div>

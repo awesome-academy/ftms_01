@@ -45,14 +45,16 @@
                             <td>{{ $courses->status_custom }}</td>
                             <td>
                                 <div class="col-md-4">
-                                    <a href="{{ route('view-course', $courses->id) }}" class="btn btn-success">@lang('message.view')</a>
+                                    <a href="{{ route('view-course', $courses->id) }}" class="btn btn-success" title="{{trans('message.view')}}"><i class="fa fa-eye"></i></a>
                                 </div>
                                 <div class="col-md-4">
-                                    <a href="{{ route('course.edit', $courses) }}" class="btn btn-primary">@lang('message.edit')</a>
+                                    <a href="{{ route('course.edit', $courses) }}" class="btn btn-primary" title="{{trans('message.edit')}}"><i class="fa fa-cog"></i></a>
                                 </div>
                                 <div class="col-md-4">
                                     {{ Form::open(['method' => 'delete', 'route' => ['course.destroy', $courses->id]]) }}
-                                        {{ Form::submit(trans('message.delete'), ['class' => 'btn btn-danger delete']) }}
+                                        <div>
+                                            {{ Form::button('<i class="fa fa-trash-o"></i>', ['class' => 'btn btn-danger delete', 'type' => 'submit']) }}
+                                        </div>
                                     {{ Form::close() }}
                                 </div>
                             </td>

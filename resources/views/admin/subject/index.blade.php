@@ -25,8 +25,8 @@
             <table id="example2" class="table table-bordered table-hover">
                 <thead>
                     <tr>
-                        <th class="name-course">@lang('message.name_course')</th>
                         <th class="col-name-subject">@lang('message.name_subject')</th>
+                        <th class="name-course">@lang('message.name_course')</th>
                         <th>@lang('message.status')</th>
                         <th class="col-action">@lang('message.action')</th>
                     </tr>
@@ -34,20 +34,20 @@
                 <tbody>
                     @foreach($subject as $subjects)
                         <tr>
-                            <td>{{ $subjects->course->name }}</td>
                             <td>{{ $subjects->name }}</td>
+                            <td>{{ $subjects->course->name }}</td>
                             <td>{{ $subjects->status_custom }}</td>
                             <td>
                                 <div class="col-md-4">
-                                    <a href="{{ route('subject.show', $subjects) }}" class="btn btn-success">@lang('message.view')</a>
+                                    <a href="{{ route('subject.show', $subjects) }}" class="btn btn-success" title="{{trans('message.view')}}"><i class="fa fa-eye"></i></a>
                                 </div>
                                 @if(Auth::user()->role == config('admin.admin'))
                                     <div class="col-md-4">
-                                        <a href="{{ route('subject.edit', $subjects) }}" class="btn btn-primary">@lang('message.edit')</a>
+                                        <a href="{{ route('subject.edit', $subjects) }}" class="btn btn-primary" title="{{trans('message.edit')}}"><i class="fa fa-cog"></i></a>
                                     </div>
                                     <div class="col-md-4">
                                         {{ Form::open(['method' => 'delete', 'route' => ['subject.destroy', $subjects->id]]) }}
-                                            {{ Form::submit(trans('message.delete'), ['class' => 'btn btn-danger delete']) }}
+                                            {{ Form::button('<i class="fa fa-trash-o"></i>', ['class' => 'btn btn-danger delete', 'type' => 'submit']) }}
                                         {{ Form::close() }}
                                     </div>
                                 @endif

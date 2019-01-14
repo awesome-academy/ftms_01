@@ -42,13 +42,6 @@
                             </tr>
                         @endforeach()
                     </tbody>
-                    <tfoot>
-                        <tr>
-                            <td></td>
-                            <td><a href="{{ route('course.index') }}" class="btn btn-success">@lang('message.back')</a></td>
-                            <td></td>
-                        </tr>
-                    </tfoot>
                 </table>
             </div>
         </div>

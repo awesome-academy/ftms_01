@@ -17,15 +17,15 @@
     <div class="box-body course-box">
         {{ Form::open(['route' => 'course.store', 'enctype' => 'multipart/form-data']) }}
             <div class="form-group">
-                {{ Form::label(trans('message.supervisor')) }}
-                {{ Form::select('user_id', $supervisor->pluck('name', 'id'), null, ['class' => 'form-control']) }}
-            </div>
-            <div class="form-group">
                 {{ Form::label(trans('message.name')) }}
                 {{ Form::text('name', '', ['class' => 'form-control', 'placeholder' => trans('message.name_course'), 'required']) }}
                 @if($errors->has('name'))
                     @include('commonts.errors')
                 @endif
+            </div>
+            <div class="form-group">
+                {{ Form::label(trans('message.supervisor')) }}
+                {{ Form::select('user_id', $supervisor->pluck('name', 'id'), null, ['class' => 'form-control']) }}
             </div>
             <div class="form-group">
                 {{ Form::label(trans('message.image')) }}
@@ -46,8 +46,8 @@
                 {{ Form::date('date_end', '', ['class' => 'form-control', 'required']) }}
             </div>
             <div class="form-group">
-                {{ Form::submit(trans('message.create'), ['class' => 'btn btn-primary']) }}
                 <a href="{{ route('course.index') }}" class="btn btn-success">@lang('message.back') </a>
+                {{ Form::submit(trans('message.create'), ['class' => 'btn btn-primary']) }}
             </div>
         {{ Form::close() }}
     </div>
