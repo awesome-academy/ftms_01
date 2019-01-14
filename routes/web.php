@@ -40,6 +40,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
     Route::get('delete-suppervisor/{user}/{course}', 'Admin\AddSuppervisorController@delete')->name('suppervisor.destroy');
     Route::get('add-suppervisor', 'Admin\AddSuppervisorController@create')->name('supperviosr.create');
     Route::post('add-suppervisor', 'Admin\AddSuppervisorController@stores')->name('suppervisor.stores');
+    Route::resource('calendar', 'Admin\CalendarController');
 });
 
 Route::get('course-study', 'CourseStudyController@index')->name('coures_study');
@@ -49,6 +50,7 @@ Route::get('show-course/{id}', 'HomeController@show')->name('course.show');
 Route::patch('close-subject', 'CourseStudyController@CloseSubject')->name('close-subject');
 Route::get('profile/{id}', 'UserController@show')->name('profile.show');
 Route::get('history', 'CourseStudyController@history')->name('history');
+Route::get('show-calendar', 'CourseStudyController@calendar')->name('show-calendar');
 Route::get('my-profile/{id}', 'UserController@index')->name('myprofile.show');
 Route::patch('update-profile/{id}', 'UserController@update')->name('profile.update');
 Route::get('show-report', 'CourseStudyController@showReport')->name('show-report');

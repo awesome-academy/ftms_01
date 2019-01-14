@@ -59,6 +59,7 @@
                 <li class="dropdown"><a id="dropdownMenu1" data-toggle="dropdown" href="about.html">@lang('message.my_course')<span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="{{ route('coures_study') }}" id="content-dropdown">@lang('message.course_study')</a></li>
+                        <li><a href="{{ route('show-calendar') }}">@lang('message.calendar')</a></li>
                         <li><a href="#">@lang('message.course_end')</a></li>
                     </ul>
                 </li>

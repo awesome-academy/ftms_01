@@ -76,7 +76,6 @@ class CourseStudyController extends Controller
                 'subject_id' => $request->subject_id,
                 'type' => config('admin.report')
             ]);
-
             $request->session()->flash(trans('message.success'), trans('message.notification_success'));
         } catch (Exception $e) {
             $request->session()->flash(trans('message.fails'), trans('message.notification_fails'));
@@ -100,8 +99,8 @@ class CourseStudyController extends Controller
                     'subject_id' => $value->id,
                     'type' => config('admin.close')
                 ]);
-
             }
+
             $request->session()->flash(trans('message.success'), trans('message.notification_success'));
         } catch (Exception $e) {
             $request->session()->flash(trans('message.fails'), trans('message.notification_fails'));
@@ -115,5 +114,16 @@ class CourseStudyController extends Controller
         $histories = Auth::user()->histories()->paginate(config('admin.paginate_history'));
 
         return view('public.history.index', compact('histories'));
+    }
+
+    public function calendar()
+    {
+        $user = Auth::user();
+        $course = $user->courses()
+            ->where('courses.status', config('admin.course_start'))
+            ->get()->groupBy('pivot.course_id')->first();
+        $calendars = $course->first()->calendars()->paginate(config('admin.paginate_calendar'));
+
+        return view('public.calendar.index', compact('calendars'));
     }
 }
