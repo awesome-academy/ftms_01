@@ -101,7 +101,7 @@
         'course_start' => 'Khóa học đang hoạt động',
         'course_detail' => 'Chi tiết khóa học',
         'subjec_course' => 'Chủ đề của bài học',
-        'report' => 'Báo Cáo',
+        'report' => 'Viết Báo Cáo',
         'content_report' => 'Nội dung báo cáo',
         'phone' => 'Số điện thoại',
         'address' => 'Địa chỉ',
@@ -111,5 +111,6 @@
         'progress_current' => 'Tiến độ hiện tại',
         'date' => 'Ngày',
         'list_report' => 'Danh sách báo cáo',
-        'complete' => 'Đã hoàn thành'
+        'complete' => 'Đã hoàn thành',
+        'read' => 'Đọc',
     ];

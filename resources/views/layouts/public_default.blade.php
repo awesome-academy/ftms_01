@@ -63,6 +63,7 @@
                     </ul>
                 </li>
                 <li><a href="{{ route('show-report') }}">@lang('message.list_report')</a></li>
+                <li><a href="{{ route('history') }}">@lang('message.history')</a></li>
             </ul>
         </div>
     </nav>

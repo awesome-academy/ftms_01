@@ -18,5 +18,9 @@
         'paginate_course_public' => 6,
         'rows_subject' => 30,
         'paginate_report' => 10,
-        'progress' => 100
+        'progress' => 100,
+        'read' => 1,
+        'close' => 2,
+        'report' => 3,
+        'paginate_history' => 10
     ];

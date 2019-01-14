@@ -78,4 +78,9 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Course::class, 'user_course');
     }
+
+    public function histories()
+    {
+        return $this->hasMany(History::class);
+    }
 }

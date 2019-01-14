@@ -48,6 +48,7 @@ Route::get('subject-detail/{id}', 'CourseStudyController@SubjectDetails')->name(
 Route::get('show-course/{id}', 'HomeController@show')->name('course.show');
 Route::patch('close-subject', 'CourseStudyController@CloseSubject')->name('close-subject');
 Route::get('profile/{id}', 'UserController@show')->name('profile.show');
+Route::get('history', 'CourseStudyController@history')->name('history');
 Route::get('my-profile/{id}', 'UserController@index')->name('myprofile.show');
 Route::patch('update-profile/{id}', 'UserController@update')->name('profile.update');
 Route::get('show-report', 'CourseStudyController@showReport')->name('show-report');

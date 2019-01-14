@@ -9,6 +9,7 @@
             <div class="row">
                 {{ Form::open(['route' => 'report']) }}
                     {{ Form::textarea('subject', $subject->content->content, ['class' => 'form-control', 'rows' => config('admin.rows_subject'), 'disabled']) }}
+                    {{ Form::hidden('subject_id', $subject->id) }}
                     <div class="form-group">
                         <h3>@lang('message.report')</h3>
                     </div>

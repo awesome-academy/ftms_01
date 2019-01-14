@@ -7,7 +7,9 @@ use App\Models\Course;
 use App\Models\User;
 use App\Models\Subject;
 use App\Models\Report;
+use App\Models\History;
 use Auth;
+use Session;
 
 class CourseStudyController extends Controller
 {
@@ -40,6 +42,15 @@ class CourseStudyController extends Controller
     {
         $subject = Subject::findOrFail($id);
 
+        if (!Session::has('history'.$subject->id)) {
+            Session::put('history'.$subject->id, true);
+            History::create([
+                'user_id' => Auth::user()->id,
+                'subject_id' => $subject->id,
+                'type' => config('admin.read')
+            ]);
+        }
+
         return view('public.course_study.subject_details', compact('subject'));
     }
 
@@ -60,6 +71,12 @@ class CourseStudyController extends Controller
             $input = $request->all();
             $input['user_id'] = Auth::user()->id;
             Report::create($input);
+            History::create([
+                'user_id' => Auth::user()->id,
+                'subject_id' => $request->subject_id,
+                'type' => config('admin.report')
+            ]);
+
             $request->session()->flash(trans('message.success'), trans('message.notification_success'));
         } catch (Exception $e) {
             $request->session()->flash(trans('message.fails'), trans('message.notification_fails'));
@@ -74,9 +91,16 @@ class CourseStudyController extends Controller
         {
             $user = User::findOrFail(Auth::user()->id);
             $subject = $user->subjects()->wherePivot('subject_id', $request->subject_id)->get();
+
             foreach ($subject as  $value) {
                 $value->pivot->status = config('admin.subject_end');
                 $value->pivot->save();
+                History::create([
+                    'user_id' => Auth::user()->id,
+                    'subject_id' => $value->id,
+                    'type' => config('admin.close')
+                ]);
+
             }
             $request->session()->flash(trans('message.success'), trans('message.notification_success'));
         } catch (Exception $e) {
@@ -84,5 +108,12 @@ class CourseStudyController extends Controller
         }
 
         return back();
+    }
+
+    public function history()
+    {
+        $histories = Auth::user()->histories()->paginate(config('admin.paginate_history'));
+
+        return view('public.history.index', compact('histories'));
     }
 }
