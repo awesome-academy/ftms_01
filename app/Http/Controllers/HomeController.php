@@ -26,7 +26,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $course = User::findOrFail(Auth::user()->id)->courses()->paginate(config('admin.paginate_course_public'))->groupBy('pivot.course_id');
+        $course = User::findOrFail(Auth::user()->id)->courses()->where('courses.status', '!=', config('admin.course_end'))->get()->groupBy('pivot.course_id');
 
         return view('home', compact('course'));
     }

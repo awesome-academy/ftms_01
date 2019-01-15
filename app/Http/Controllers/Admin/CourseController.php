@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Repositories\EloquentModels\CourseRepository;
 use App\Models\Course;
 use App\Models\Subject;
+use App\Models\CourseCalendar;
 use App\Models\User;
 use App\Http\Requests\CourseRequest;
 use App\Upload;
@@ -64,7 +65,7 @@ class CourseController extends Controller
             $request->session()->flash(trans('message.fails'), trans('message.notification_fails'));
         }
 
-        return back();
+        return redirect()->route('course.index');
     }
 
     /**
@@ -113,7 +114,8 @@ class CourseController extends Controller
        } catch (Exception $e) {
             $request->session()->flash(trans('message.fails'), trans('message.notification_fails'));
        }
-       return back();
+
+       return redirect()->route('course.index');
     }
 
     /**
@@ -131,6 +133,7 @@ class CourseController extends Controller
             foreach ($subject as  $value) {
                 $value->content->delete();
             }
+            CourseCalendar::where('course_id', $id)->delete();
             Subject::where('course_id', $id)->delete();
             $course->courseUsers()->detach();
             $this->courseRepository->delete($id);

@@ -28,7 +28,7 @@ class AddTraineeToCourseController extends Controller
 
     public function create()
     {
-        $course = Course::all();
+        $course = Course::where('status', '!=', config('admin.course_end'));
         $user = User::where('role', config('admin.member'))->get();
 
         return view('admin.course.trainees.create', compact('course', 'user'));
@@ -36,7 +36,7 @@ class AddTraineeToCourseController extends Controller
 
     public function showSubject(Request $request)
     {
-        $subject = Subject::where('course_id', $request->course_id)->get();
+        $subject = Subject::where('course_id', $request->course_id)->where('status', config('admin.subject_ready'))->get();
 
         return response()->json($subject);
     }
@@ -57,7 +57,7 @@ class AddTraineeToCourseController extends Controller
             $request->session()->flash(trans('message.fails'), trans('message.notification_falis'));
         }
 
-        return back();
+        return redirect()->route('show-trainee');
     }
 
     public function deleteTrainee($user, $course, Request $request)

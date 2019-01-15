@@ -1,9 +1,12 @@
 @extends('layouts.default_admin')
 @section('title', trans('message.user'))
 @section('content')
+    <section class="content-header">
+        <h1>@lang('message.list_suppervisor_course')</h1>
+    </section>
     <div class="box">
         <div class="box-header">
-            <h3 class="box-title">@lang('message.user')
+            <h3 class="box-title">
                 @if(Auth::user()->role == config('admin.supervisor'))
                 @else
                     <a href="{{route('register')}}" class="btn btn-primary">

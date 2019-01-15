@@ -28,6 +28,7 @@ class SubjectController extends Controller
     public function index()
     {
         $subject = Subject::paginate(config('admin.paginate_subject'));
+
         return view('admin.subject.index', compact('subject'));
     }
 
@@ -39,6 +40,7 @@ class SubjectController extends Controller
     public function create()
     {
         $course = Course::all();
+
         return view('admin.subject.create', compact('course'));
     }
 
@@ -72,7 +74,7 @@ class SubjectController extends Controller
             $request->session()->flash(trans('message.fails'), trans('message.notification_fails'));
         }
 
-        return back();
+        return redirect()->route('subject.index');
     }
 
     /**
@@ -118,7 +120,7 @@ class SubjectController extends Controller
             $request->session()->flash(trans('message.fails'), trans('message.notification_fails'));
         }
 
-        return back();
+        return redirect()->route('subject.index');
     }
 
     /**
@@ -132,6 +134,7 @@ class SubjectController extends Controller
         try
         {
             $subject = $this->subjectRepository->find($id);
+            $subject->users()->detach();
             $subject->content->delete();
             $this->subjectRepository->delete($id);
 
@@ -139,6 +142,7 @@ class SubjectController extends Controller
         } catch (Exception $e) {
             $request->session()->flash(trans('message.fails'), trans('message.notification_fails'));
         }
+
         return back();
     }
 }
