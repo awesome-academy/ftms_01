@@ -19,7 +19,8 @@ $(document).ready(function(){
                        tr = tr + `<tr>`
                                 + `<td>` + key + `</td>`
                                 + `<td>
-                                        <a href = "delete-trainee/` +value[0].pivot.user_id+`/`+value[0].pivot.course_id+`" class = "btn btn-danger delete">Xóa</a>
+                                        <a href = "delete-trainee/` +value[0].pivot.user_id+`/`+value[0].pivot.course_id+`" class = "btn btn-danger delete">
+                                        <i class="fa fa-trash-o"></i></a>
                                     </td>`
                             + `</tr>`
                     });

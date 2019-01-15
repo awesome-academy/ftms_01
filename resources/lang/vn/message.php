@@ -117,5 +117,8 @@
         'course_detail' => 'Chi tiết khóa học',
         'save' => 'Tiến hành lưu',
         'course_end' => 'Khóa học đã hoàn thành',
-        'not_study' => 'Chưa học'
+        'not_study' => 'Chưa học',
+        'choose_subject' => 'Chọn chủ đề',
+        'choose_suppervisor' => 'Chọn suppervisor',
+        'choose_trainee' => 'Chọn học viên'
     ];

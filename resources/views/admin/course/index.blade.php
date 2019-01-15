@@ -1,8 +1,8 @@
 @extends('layouts.default_admin')
-@section('title', trans('message.course'))
+@section('title', trans('message.list_course'))
 @section('content')
     <section class="content-header">
-        <h1>@lang('message.course')</h1>
+        <h1>@lang('message.list_course')</h1>
     </section>
     <div class="box">
         <div class="box-header">
