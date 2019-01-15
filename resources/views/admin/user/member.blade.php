@@ -28,24 +28,22 @@
                         <th class="col-title-post"> @lang('message.name') </th>
                         <th class="col-name"> @lang('message.email')</th>
                         <th> @lang('message.role')</th>
-                        <th> @lang('message.password') </th>
                         <th> @lang('message.action') </th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach($member as $members)
                         <tr>
-                            <td> {{ $members->name }} </td>
-                            <td> {{ $members->email }} </td>
-                            <td> {{ $members->role_custom }} </td>
-                            <td> {{ $members->password }} </td>
+                            <td>{{ $members->name }}</td>
+                            <td>{{ $members->email }}</td>
+                            <td>{{ $members->role_custom }}</td>
                             <td>
-                                <div class="col-md-4">
-                                    {{ Form::button(trans('message.view'), ['class' => 'btn btn-success show-modal', 'data-toggle' => 'modal', 'data-target' => '#exampleModal'.$members->id]) }}
+                                <div class="col-md-2">
+                                    {{ Form::button('<i class="fa fa-eye"></i>', ['class' => 'btn btn-success show-modal', 'data-toggle' => 'modal', 'data-target' => '#exampleModal'.$members->id, 'title' => trans('message.view')]) }}
                                 </div>
-                                <div class="col-md-3">
-                                    {{Form::open()}}
-                                        {{Form::submit(trans('message.delete'), ['class' => 'btn btn-danger delete'])}}
+                                <div class="col-md-2">
+                                    {{Form::open(['route' => ['delete-member', $members->id], 'method' => 'delete'])}}
+                                        {{Form::button('<i class="fa fa-trash-o"></i>', ['class' => 'btn btn-danger delete', 'type' => 'submit', 'title' => trans('message.delete')])}}
                                     {{Form::close()}}
                                 </div>
                             </td>

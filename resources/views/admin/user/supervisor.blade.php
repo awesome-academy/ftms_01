@@ -31,7 +31,6 @@
                         <th class="col-title-post"> @lang('message.name') </th>
                         <th class="col-name"> @lang('message.email')</th>
                         <th> @lang('message.role')</th>
-                        <th> @lang('message.password') </th>
                         <th> @lang('message.action') </th>
                     </tr>
                 </thead>
@@ -41,16 +40,15 @@
                             <td>{{ $supervisors->name }}</td>
                             <td>{{ $supervisors->email }}</td>
                             <td>{{ $supervisors->role_custom }}</td>
-                            <td>{{ $supervisors->password }}</td>
                             <td>
-                                <div class="col-md-4">
-                                    {{ Form::button(trans('message.view'), ['class' => 'btn btn-success show-modal', 'data-toggle' => 'modal', 'data-target' => '#exampleModal'.$supervisors->id]) }}
+                                <div class="col-md-2">
+                                    {{ Form::button('<i class="fa fa-eye"></i>', ['class' => 'btn btn-success show-modal', 'data-toggle' => 'modal', 'data-target' => '#exampleModal'.$supervisors->id, 'title' => trans('message.view')]) }}
                                 </div>
-                                <div class="col-md-3">
+                                <div class="col-md-2">
                                     @if(Auth::user()->role == config('admin.supervisor'))
                                     @else
-                                        {{Form::open()}}
-                                            {{Form::submit(trans('message.delete'), ['class' => 'btn btn-danger delete'])}}
+                                    {{Form::open(['route' => ['delete-suppervisor', $supervisors->id], 'method' => 'delete'])}}
+                                            {{Form::button('<i class="fa fa-trash-o"></i>', ['class' => 'btn btn-danger delete', 'type' => 'submit', 'title' => trans('message.delete')])}}
                                         {{Form::close()}}
                                     @endif
                                 </div>

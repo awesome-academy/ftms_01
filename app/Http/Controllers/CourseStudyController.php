@@ -76,6 +76,7 @@ class CourseStudyController extends Controller
                 'subject_id' => $request->subject_id,
                 'type' => config('admin.report')
             ]);
+
             $request->session()->flash(trans('message.success'), trans('message.notification_success'));
         } catch (Exception $e) {
             $request->session()->flash(trans('message.fails'), trans('message.notification_fails'));
