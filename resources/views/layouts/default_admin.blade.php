@@ -76,6 +76,9 @@
                                     <li>
                                         <a href="{{ route('calendar.index') }}"><i class="fa fa-circle-o"></i> @lang('message.calendar')</a>
                                     </li>
+                                    <li>
+                                        <a href="{{ route('show-course') }}"><i class="fa fa-circle-o"></i> @lang('message.progress')</a>
+                                    </li>
                                 </ul>
                             </li>
                             <li>

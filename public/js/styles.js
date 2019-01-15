@@ -118,6 +118,14 @@ $(document).ready(function () {
         }
         return false;
     });
+    var n = $('#quantityUser').val();
+    for (var i = 1; i <= n; i++) {
+        $('.progress-bar' + i).css({
+            'width': $('#progress_course' + i).val() + '%',
+            'background-color': '#66CC00',
+            'color': 'balck'
+        }).attr('aria-valuenow');
+    }
 });
 
 /***/ })

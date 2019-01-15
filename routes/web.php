@@ -41,6 +41,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
     Route::get('add-suppervisor', 'Admin\AddSuppervisorController@create')->name('supperviosr.create');
     Route::post('add-suppervisor', 'Admin\AddSuppervisorController@stores')->name('suppervisor.stores');
     Route::resource('calendar', 'Admin\CalendarController');
+    Route::get('show-course', 'Admin\CourseController@showCourse')->name('show-course');
+    Route::get('show-progress/{id}', 'Admin\CourseController@showProgress')->name('show-progress');
 });
 
 Route::get('course-study', 'CourseStudyController@index')->name('coures_study');

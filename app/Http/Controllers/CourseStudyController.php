@@ -16,8 +16,8 @@ class CourseStudyController extends Controller
     public function index()
     {
         $courseStart =  User::findOrFail(Auth::user()->id)->courses()
-                            ->where('courses.status', config('admin.course_start'))
-                            ->get()->groupBy('pivot.course_id');
+            ->where('courses.status', config('admin.course_start'))
+            ->get()->groupBy('pivot.course_id');
 
         return view('public.course_study.index', compact('courseStart'));
     }
@@ -26,13 +26,13 @@ class CourseStudyController extends Controller
     {
         $course = Course::findOrFail($id);
         $subject = User::findOrFail(Auth::user()->id)
-                        ->subjects()->wherePivot('course_id', $id)
-                        ->paginate(config('admin.paginate_subject'));
+            ->subjects()->wherePivot('course_id', $id)
+            ->paginate(config('admin.paginate_subject'));
         $subjectComplete = User::findOrFail(Auth::user()->id)
-                                ->subjects()
-                                ->wherePivot('course_id', $id)
-                                ->wherePivot('status', config('admin.subject_end'))
-                                ->get();
+            ->subjects()
+            ->wherePivot('course_id', $id)
+            ->wherePivot('status', config('admin.subject_end'))
+            ->get();
         $progress = round((count($subjectComplete)/count($subject)*config('admin.progress')));
 
         return view('public.course_study.details', compact('subject','course', 'progress'));
