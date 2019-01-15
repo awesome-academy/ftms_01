@@ -42,11 +42,11 @@
                             <td>
                                 @if(Auth::user()->role == config('admin.admin'))
                                     <div class="col-md-5">
-                                        <a href="{{ route('calendar.edit', $calendar) }}" class="btn btn-primary" title="{{trans('message.edit')}}"><i class="fa fa-cog"></i></a>
+                                        <a href="{{ route('calendar.edit', $calendar) }}" class="btn btn-primary" title="{{trans('message.edit')}}"><i class="fa fa-edit"></i></a>
                                     </div>
                                     <div class="col-md-6">
                                         {{ Form::open(['method' => 'delete', 'route' => ['calendar.destroy', $calendar->id]]) }}
-                                            {{ Form::button('<i class="fa fa-trash-o"></i>', ['class' => 'btn btn-danger delete', 'type' => 'submit']) }}
+                                            {{ Form::button('<i class="fa fa-trash-o"></i>', ['class' => 'btn btn-danger delete', 'type' => 'submit', 'title' => trans('message.delete')]) }}
                                         {{ Form::close() }}
                                     </div>
                                 @endif

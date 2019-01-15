@@ -44,9 +44,13 @@ class Subject extends Model
         {
             return trans('message.subject_ready');
         }
-        if($this->status == config('admin.subject_end'))
+        if ($this->status == config('admin.subject_end'))
         {
             return trans('message.subject_end');
+        }
+        if ($this->status == config('admin.subject_start'))
+        {
+            return $this->trans('message.subject_start');
         }
     }
 

@@ -1,11 +1,6 @@
 @extends('layouts.public_default')
 @section('title', trans('message.course_end'))
 @section('content')
-    <section>
-        <div class="content">
-            {{ Html::image(asset('storage/image/banner.jpg')) }}
-        </div>
-    </section>
     <section class="courses-section spad">
         <div class="container">
             <div class="section-title text-center">
@@ -14,6 +9,11 @@
             <div class="row">
                 <div class="col-md-3"></div>
                 <div class="col-md-7">
+                    <h4>
+                        <span>@lang('message.content')</span>
+                        <span class="title-status">@lang('message.status')</span>
+                    </h4>
+                    <hr>
                     @foreach($subjects as $subject)
                         <div class="col-md-9">
                             <h4>{{$subject->name}}</h4>

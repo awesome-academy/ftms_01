@@ -47,7 +47,7 @@ class AddTraineeToCourseController extends Controller
         {
             $subject = $request->subject;
             $user_id = $request->user_id;
-            $status = config('admin.subject_ready');
+            $status = config('admin.subject_start');
 
             foreach ($subject as $value) {
                 foreach ($user_id as $id) {

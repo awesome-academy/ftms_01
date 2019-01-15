@@ -31,12 +31,12 @@
                     <div>
                         <h3>
                             {{ Form::open(['method' => 'patch', 'route' => 'close-subject']) }}
-                                @if($subjects->pivot->status == config('admin.subject_ready'))
+                                @if($subjects->pivot->status == config('admin.subject_start'))
                                     <a href="{{ route('subject.details', $subjects->id) }}" id="read">{{ $subjects->name }}</a>
                                     {{Form::hidden('subject_id', $subjects->id, ['id' => 'subject_id'])}}
-                                    <span class="subject-style">@lang('message.subject_ready')</span>
+                                    <span class="subject-style">@lang('message.start')</span>
                                     {{ Form::submit(trans('message.subject_end'), ['class' => ' btn btn-danger close-subjet', 'id' => 'close']) }}
-                                @else
+                                @elseif ($subjects->pivot->status == config('admin.subject_end'))
                                     {{ $subjects->name }}
                                     <span class="subject-style">@lang('message.complete')</span>
                                 @endif

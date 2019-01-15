@@ -12,6 +12,7 @@ class History extends Model
         'type'
     ];
     protected $appends = ['type_custom'];
+    protected $date = ['created_at_custom'];
 
     public function user()
     {
@@ -37,5 +38,10 @@ class History extends Model
 
             return trans('message.complete');
         }
+    }
+
+    public function getCreatedAtCustomAttribute()
+    {
+        return $this->created_at->format('d-m-Y H:i:s');
     }
 }
