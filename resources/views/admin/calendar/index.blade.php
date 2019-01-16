@@ -1,9 +1,6 @@
 @extends('layouts.default_admin')
 @section('title', trans('message.calendar'))
 @section('content')
-    <section class="content-header">
-        <h1>@lang('message.calendar')</h1>
-    </section>
     <div class="box">
         <div class="box-header">
             <h3 class="box-title">
@@ -42,11 +39,11 @@
                             <td>
                                 @if(Auth::user()->role == config('admin.admin'))
                                     <div class="col-md-5">
-                                        <a href="{{ route('calendar.edit', $calendar) }}" class="btn btn-primary">@lang('message.edit')</a>
+                                        <a href="{{ route('calendar.edit', $calendar) }}" class="btn btn-primary" title="{{trans('message.edit')}}"><i class="fa fa-edit"></i></a>
                                     </div>
                                     <div class="col-md-6">
                                         {{ Form::open(['method' => 'delete', 'route' => ['calendar.destroy', $calendar->id]]) }}
-                                            {{ Form::submit(trans('message.delete'), ['class' => 'btn btn-danger delete']) }}
+                                            {{ Form::button('<i class="fa fa-trash-o"></i>', ['class' => 'btn btn-danger delete', 'type' => 'submit', 'title' => trans('message.delete')]) }}
                                         {{ Form::close() }}
                                     </div>
                                 @endif

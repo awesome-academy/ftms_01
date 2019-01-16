@@ -114,5 +114,6 @@
         'read' => 'Đọc',
         'calendar' => 'Lịch học',
         'date_study' => 'Thứ',
-        'course_detail' => 'Chi tiết khóa học'
+        'course_detail' => 'Chi tiết khóa học',
+        'save' => 'Tiến hành lưu'
     ];

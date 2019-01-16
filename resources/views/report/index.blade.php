@@ -1,5 +1,5 @@
 @extends('layouts.public_default')
-@section('title', trans('message.content_report'))
+@section('title', trans('message.list_report'))
 @section('content')
     <section class="courses-section spad">
         <div class="container">

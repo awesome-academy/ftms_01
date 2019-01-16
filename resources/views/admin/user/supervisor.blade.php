@@ -30,8 +30,8 @@
                     <tr>
                         <th class="col-title-post"> @lang('message.name') </th>
                         <th class="col-name"> @lang('message.email')</th>
-                        <th> @lang('message.role')</th>
-                        <th> @lang('message.action') </th>
+                        <th>@lang('message.role')</th>
+                        <th>@lang('message.action')</th>
                     </tr>
                 </thead>
                 <tbody>

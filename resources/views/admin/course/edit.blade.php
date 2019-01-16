@@ -44,8 +44,8 @@
                 {{ Form::select('status', [ config('admin.course_ready') => trans('message.ready'), config('admin.course_start') => trans('message.start'), config('admin.course_end') => trans('message.end')], $course->status, ['class' => 'form-control'])}}
             </div>
             <div class="form-group">
-                {{ Form::submit(trans('message.edit'), ['class' => 'btn btn-primary']) }}
                 <a href="{{ route('course.index') }}" class="btn btn-success"> @lang('message.back') </a>
+                {{ Form::submit(trans('message.save'), ['class' => 'btn btn-primary']) }}
             </div>
         {{ Form::close() }}
     </div>

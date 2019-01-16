@@ -87,7 +87,7 @@ class CourseStudyController extends Controller
 
     public function CloseSubject(Request $request)
     {
-         try
+        try
         {
             $user = User::findOrFail(Auth::user()->id);
             $subject = $user->subjects()->wherePivot('subject_id', $request->subject_id)->get();
