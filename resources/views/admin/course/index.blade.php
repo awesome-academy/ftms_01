@@ -45,7 +45,7 @@
                             <td>{{ $courses->status_custom }}</td>
                             <td>
                                 <div class="col-md-4">
-                                    <a href="" class="btn btn-success">@lang('message.view')</a>
+                                    <a href="{{ route('view-course', $courses->id) }}" class="btn btn-success">@lang('message.view')</a>
                                 </div>
                                 <div class="col-md-4">
                                     <a href="{{ route('course.edit', $courses) }}" class="btn btn-primary">@lang('message.edit')</a>

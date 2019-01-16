@@ -30,6 +30,7 @@ class CourseController extends Controller
     public function index()
     {
         $course = Course::paginate(config('admin.paginate_course'));
+
         return view('admin.course.index', compact('course'));
     }
 
@@ -41,6 +42,7 @@ class CourseController extends Controller
     public function create()
     {
         $supervisor = User::where('role', config('admin.supervisor'));
+
         return view('admin.course.create', compact('supervisor'));
     }
 
@@ -76,7 +78,11 @@ class CourseController extends Controller
      */
     public function show($id)
     {
-        //
+        $course = Course::findOrFail($id);
+        $subjects = $course->subjects()->paginate(config('admin.paginate_course'));
+        $calendars = $course->calendars()->get();
+
+        return view('admin.course.show', compact('subjects', 'calendars', 'course'));
     }
 
     /**

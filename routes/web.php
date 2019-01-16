@@ -28,6 +28,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
     Route::get('member', 'Admin\AdminController@showMember')->name('member.show');
     Route::get('supervisor', 'Admin\AdminController@showSupervisor')->name('supervisor.show');
     Route::resource('course', 'Admin\CourseController');
+    Route::get('view-course/{id}', 'Admin\CourseController@show')->name('view-course');
     Route::resource('subject', 'Admin\SubjectController');
     Route::get('show-trainee', 'Admin\AddTraineeToCourseController@index')->name('show-trainee');
     Route::post('post-trainee', 'Admin\AddTraineeToCourseController@show');
