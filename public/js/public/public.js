@@ -85,7 +85,7 @@ $(document).ready(function () {
             return false;
         }
     });
-    $('.progress-bar').css('width', $('#progress_course').val() + '%').attr('aria-valuenow', valeur);
+    $('.progress-bar').css('width', $('#progress_course').val() + '%').attr('aria-valuenow');
 });
 
 /***/ })
