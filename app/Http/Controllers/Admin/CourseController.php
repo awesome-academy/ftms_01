@@ -12,6 +12,7 @@ use App\Models\User;
 use App\Http\Requests\CourseRequest;
 use App\Upload;
 use App\Jobs\SendMailEndCourse;
+use Pusher\Pusher;
 
 class CourseController extends Controller
 {
@@ -119,8 +120,24 @@ class CourseController extends Controller
 
             if ($course->status == config('admin.course_end'))
             {
+                $options = array(
+                    'cluster' => 'ap1',
+                    'useTLS' => true
+                  );
+                $pusher = new Pusher(
+                    env('PUSHER_APP_KEY'),
+                    env('PUSHER_APP_SECRET'),
+                    env('PUSHER_APP_ID'),
+                    $options
+                );
                 foreach ($users as $user) {
                     dispatch(new SendMailEndCourse($user->first(), $course));
+                    $data = [
+                        'content' => 'Xoa course',
+                        'id' => $user->first()->id
+                    ];
+                    $pusher->trigger('send-message', 'NotifyEndCourse', $data);
+
                 }
             }
 
