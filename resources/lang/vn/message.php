@@ -139,4 +139,10 @@
         'mail_preamble_report' => 'Xin chào bạn',
         'mail_body_report' => 'Chúng tôi gửi mail để thông báo cho bạn viết report về khóa học',
         'mail_end_report' => 'Xin chân thành cảm ơn',
+        'notification_course_end' => 'Thông báo đóng khóa học',
+        '403' => 'Khônng tìm thấy trang mà bạn yêu cầu',
+        'notification_preamble' => 'Xin chào bạn',
+        'notification_body' => 'Chúng tôi xin thông báo cho bạn biết rằng chúng tôi đã đóng khóa học',
+        'notification_preamble' => 'Chúng tôi cảm ơn bạn đã đồng hành với chúng tôi suốt thời gian vừa qua. Xin chân thành cảm ơn',
+        'total' => 'Tổng số lượng'
     ];

@@ -3,30 +3,32 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\User;
-use App\Models\Profile;
+use App\Repositories\EloquentModels\UserRepository;
+use App\Repositories\EloquentModels\ProfileRepository;
 use App\Http\Requests\UserRequest;
 use App\Upload;
 
 class UserController extends Controller
 {
-    protected $upload;
+    protected $upload, $userRepository, $profileRepository;
 
-    public function __construct(Upload $upload)
+    public function __construct(Upload $upload, UserRepository $userRepository, ProfileRepository $profileRepository)
     {
         $this->upload = $upload;
+        $this->userRepository = $userRepository;
+        $this->profileRepository = $profileRepository;
     }
 
     public function index($id)
     {
-        $user = User::findOrFail($id);
+        $user = $this->userRepository->find($id);
 
         return view('profile.index', compact('user'));
     }
 
     public function show($id)
     {
-        $user = User::findOrFail($id);
+        $user = $this->userRepository->find($id);
 
         return view('profile.member_detail', compact('user'));
     }
@@ -35,7 +37,7 @@ class UserController extends Controller
     {
         try
         {
-            $user = User::findOrFail($id);
+            $user = $this->userRepository->find($id);
             $profile = $request->except('_method', '_token', 'image');
             $nameImg="";
             if (($user->profile) == null)
@@ -43,7 +45,7 @@ class UserController extends Controller
                 $nameImg = $this->upload->uploadAvatar($request->image);
                 $profile['user_id'] = $id;
                 $profile['image'] = $nameImg;
-                Profile::create($profile);
+                $this->profileRepository->create($profile);
             } else {
                 $nameImg = $request->oldImg;
                 if($request->has('image'))

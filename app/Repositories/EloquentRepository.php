@@ -50,4 +50,19 @@ abstract class EloquentRepository
 
         return false;
     }
+
+    public function paginate($perpage)
+    {
+        return $this->model->paginate($perpage);
+    }
+
+    public function where($conditions, $operator = null, $value)
+    {
+       return $this->model->where($conditions, $operator, $value);
+    }
+
+    public function all()
+    {
+        return $this->model->all();
+    }
 }

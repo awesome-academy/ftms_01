@@ -4,8 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Repositories\EloquentModels\CalendarRepository;
+use App\Repositories\EloquentModels\CourseRepository;
 use App\Models\CourseCalendar;
-use App\Models\Course;
 
 class CalendarController extends Controller
 {
@@ -14,9 +15,17 @@ class CalendarController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    protected $calendarRepository, $courseRepository;
+
+    public function __construct(CalendarRepository $calendarRepository, CourseRepository $courseRepository)
+    {
+        $this->calendarRepository = $calendarRepository;
+        $this->courseRepository = $courseRepository;
+    }
+
     public function index()
     {
-        $calendars = CourseCalendar::paginate(config('admin.paginate_calendar'));
+        $calendars = $this->calendarRepository->paginate(config('admin.paginate_calendar'));
 
         return view('admin.calendar.index', compact('calendars'));
     }
@@ -28,7 +37,7 @@ class CalendarController extends Controller
      */
     public function create()
     {
-        $courses = Course::all();
+        $courses = $this->courseRepository->where('status', '!=', config('admin.course_end'));
 
         return view('admin.calendar.create', compact('courses'));
     }
@@ -55,7 +64,7 @@ class CalendarController extends Controller
                 $input['hour_end'] = $request->$hourEnd;
                 $dayCourse = $day.$i;
                 $input['day'] = $request->$dayCourse;
-                CourseCalendar::create($input);
+                $this->calendarRepository->create($input);
 
                 $request->session()->flash(trans('message.success'), trans('message.notification_success'));
             }
@@ -100,7 +109,7 @@ class CalendarController extends Controller
         try
         {
             $input = $request->all();
-            CourseCalendar::findOrFail($id)->update($input);
+            $this->calendarRepository->find($id)->update($input);
 
             $request->session()->flash(trans('message.success'), trans('message.notification_success'));
         } catch (Exception $e) {
@@ -120,7 +129,7 @@ class CalendarController extends Controller
     {
         try
         {
-            CourseCalendar::findOrFail($id)->delete();
+            $this->calendarRepository->find($id)->delete();
 
             $request->session()->flash(trans('message.success'), trans('message.notification_success'));
         } catch (Exception $e) {

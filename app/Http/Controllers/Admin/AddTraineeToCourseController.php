@@ -4,23 +4,32 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Course;
-use App\Models\Subject;
-use App\Models\User;
+use App\Repositories\EloquentModels\UserRepository;
+use App\Repositories\EloquentModels\CourseRepository;
+use App\Repositories\EloquentModels\SubjectRepository;
 use Response;
 
 class AddTraineeToCourseController extends Controller
 {
+    protected $userRepository, $subjectRepository, $courseRepository;
+
+    public function __construct(UserRepository $userRepository, CourseRepository $courseRepository, SubjectRepository $subjectRepository)
+    {
+        $this->userRepository = $userRepository;
+        $this->courseRepository = $courseRepository;
+        $this->subjectRepository = $subjectRepository;
+    }
+
     public function index()
     {
-        $course = Course::all();
+        $course = $this->courseRepository->all();
 
         return view('admin.course.trainees.index', compact('course'));
     }
 
     public function show(Request $request)
     {
-        $course = Course::findOrFail($request->course_id);
+        $course = $this->courseRepository->find($request->course_id);
         $trainee = $course->users()->get()->groupBy('name');
 
         return response()->json($trainee);
@@ -28,15 +37,15 @@ class AddTraineeToCourseController extends Controller
 
     public function create()
     {
-        $course = Course::where('status', '!=', config('admin.course_end'))->get();
-        $user = User::where('role', config('admin.member'))->get();
+        $course = $this->courseRepository->where('status', '!=', config('admin.course_end'))->get();
+        $user = $this->userRepository->where('role', '=',config('admin.member'))->get();
 
         return view('admin.course.trainees.create', compact('course', 'user'));
     }
 
     public function showSubject(Request $request)
     {
-        $subject = Subject::where('course_id', $request->course_id)->where('status', config('admin.subject_ready'))->get();
+        $subject = $this->subjectRepository->where('course_id', '=',$request->course_id)->where('status', config('admin.subject_ready'))->get();
 
         return response()->json($subject);
     }
@@ -51,7 +60,7 @@ class AddTraineeToCourseController extends Controller
 
             foreach ($subject as $value) {
                 foreach ($user_id as $id) {
-                    $user = User::findOrFail($id);
+                    $user = $this->userRepository->find($id);
                     $user->courses()->attach($request->course_id, ['subject_id' => $value, 'status' => $status]);
                 }
             }
@@ -68,7 +77,7 @@ class AddTraineeToCourseController extends Controller
     {
         try
         {
-            User::findOrFail($user)->courses()->wherePivot('course_id', $course)->detach();
+            $this->userRepository->find($user)->courses()->wherePivot('course_id', $course)->detach();
             $request->session()->flash(trans('message.success'), trans('message.notification_success'));
         } catch (Exception $e) {
             $request->session()->flash(trans('message.fails'), trans('message.notification_falis'));

@@ -7,6 +7,7 @@ use Carbon\Carbon;
 
 class Course extends Model
 {
+
     protected $fillable = [
         'name',
         'image',

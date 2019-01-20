@@ -4,14 +4,17 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Repositories\EloquentModels\UserRepository;
 use Auth;
-use App\Models\User;
 
 class AdminController extends Controller
 {
-    public function __construct()
+    protected $userRepository;
+
+    public function __construct(UserRepository $userRepository)
     {
         $this->middleware('checkuser');
+        $this->userRepository = $userRepository;
     }
 
     public function index()
@@ -23,14 +26,14 @@ class AdminController extends Controller
 
     public function showMember()
     {
-        $member = User::where('role', config('admin.member'))->paginate(config('admin.paginate_user'));
+        $member = $this->userRepository->where('role', '=' ,config('admin.member'))->paginate(config('admin.paginate_user'));
 
         return view('admin.user.member', compact('member'));
     }
 
     public function showSupervisor()
     {
-        $supervisor = User::where('role', config('admin.supervisor'))->paginate(config('admin.paginate_user'));
+        $supervisor =  $this->userRepository->where('role', '=',config('admin.supervisor'))->paginate(config('admin.paginate_user'));
 
         return view('admin.user.supervisor', compact('supervisor'));
     }
@@ -39,7 +42,7 @@ class AdminController extends Controller
     {
         try
         {
-            $member = User::findOrFail($id);
+            $member = $this->userRepository->find($id);
 
             if (isset($member->profile)) {
                 $member->profile->delete();
@@ -61,7 +64,7 @@ class AdminController extends Controller
     {
         try
         {
-            $suppervisor = User::findOrFail($id);
+            $suppervisor = $this->userRepository->find($id);
 
             if (isset($suppervisor->profile)) {
                 $suppervisor->profile->delete();

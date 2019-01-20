@@ -63,3 +63,4 @@ Route::get('show-report', 'CourseStudyController@showReport')->name('show-report
 Route::post('report', 'CourseStudyController@report')->name('report');
 Route::get('course-end', 'CourseStudyController@CourseEnd')->name('course-end');
 Route::get('course-end-detail/{id}', 'CourseStudyController@CourseEndDetail')->name('course-end-detail');
+Route::get('notification-course-end/{id}', 'HomeController@ShowNotification')->name('notification_course_end');

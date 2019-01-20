@@ -9,22 +9,6 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     {{ Html::style(asset('css/unica.css')) }}
     {{ Html::style(asset('css/bootstrap.min.css')) }}
-    <style type="text/css">
-        a.notif {
-  position: absolute;
-  height: 50px;
-  width: 50px;
-  background: url('http://i.imgur.com/evpC48G.png');
-  background-size: contain;
-  text-decoration: none;
-}
-.num {
-  position: absolute;
-  right: 11px;
-  top: 6px;
-  color: #fff;
-}
-    </style>
 </head>
 <body>
     <div id="preloder">
@@ -82,9 +66,13 @@
                 <li><a href="{{ route('show-report') }}">@lang('message.list_report')</a></li>
                 <li><a href="{{ route('history') }}">@lang('message.history')</a></li>
                 <li class="dropdown">
-                    <a href="" class="notif" id="dropdownMenu2" data-toggle="dropdown"><span class="num" id = "count">0</span></a>
+                    <a href="" class="notif" id="dropdownMenu2" data-toggle="dropdown"><span class="num" id = "count">{{ count(auth()->user()->unreadNotifications) }}</span></a>
                     {{ Form::hidden('user_id', Auth::user()->id, ['id' => 'user_id']) }}
                     <ul class="dropdown-menu" id = 'content'>
+                        @foreach(auth()->user()->unreadNotifications as $result)
+                            <li><a href="{{ route('notification_course_end', $result) }}">@lang('message.notification_course_end') {{ ($result['data']['course']['name']) }}</a></li>
+
+                        @endforeach()
                     </ul>
                 </li>
             </ul>
@@ -118,12 +106,11 @@
 {{ Html::script(asset('js/jquery.js')) }}
 {{ Html::script(asset('js/styles.js')) }}
 {{ Html::script(asset('js/public/main.js')) }}
-
 {{ Html::script(asset('js/public/public.js')) }}
 {{ Html::script(asset('js/bootstrap.min.js')) }}
+{{ Html::script('https://js.pusher.com/3.2/pusher.min.js') }}
 
 </body>
-<script src="https://js.pusher.com/3.2/pusher.min.js"></script>
 <script type="text/javascript">
     Pusher.logToConsole = true;
     var pusher = new Pusher('{{env('PUSHER_APP_KEY')}}', {
@@ -132,16 +119,15 @@
     });
     var channel = pusher.subscribe('send-message');
     var user_id = $('#user_id').val();
-    var count = 0;
+    var count = $('#count').text();
     channel.bind('NotifyEndCourse', function(data) {
-
         if (user_id == data.id)
         {
-            var newHtml = `<li><a href="" >`+ data.content + `</a></li>`;
-            $('#content').append(newHtml);
             count++;
+            var newHtml = `<li><a href="/notification-course-end/`+data.notification_id+`">`+ data.content + `</a></li>`;
+            $('#content').append(newHtml);
         }
-        $('#count').html(count);
+        $('#count').text(count);
     });
 </script>
 </html>

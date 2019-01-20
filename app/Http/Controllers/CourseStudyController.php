@@ -3,20 +3,37 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Course;
-use App\Models\User;
-use App\Models\Subject;
-use App\Models\Report;
-use App\Models\History;
+use App\Repositories\EloquentModels\CourseRepository;
+use App\Repositories\EloquentModels\UserRepository;
+use App\Repositories\EloquentModels\SubjectRepository;
+use App\Repositories\EloquentModels\ReportRepository;
+use App\Repositories\EloquentModels\HistoryRepository;
 use Auth;
 use Session;
 use Illuminate\Pagination\Paginator;
 
 class CourseStudyController extends Controller
 {
+    protected $courseRepository, $userRepository, $subjectReposiory, $historyRepository, $reportRepository;
+
+    public function __construct(
+        CourseRepository $courseRepository,
+        UserRepository $userRepository,
+        SubjectRepository $subjectReposiory,
+        ReportRepository $reportRepository,
+        HistoryRepository $historyRepository
+    )
+    {
+        $this->courseRepository = $courseRepository;
+        $this->userRepository = $userRepository;
+        $this->subjectReposiory = $subjectReposiory;
+        $this->historyRepository = $historyRepository;
+        $this->reportRepository = $reportRepository;
+    }
+
     public function index()
     {
-        $courseStart =  User::findOrFail(Auth::user()->id)->courses()
+        $courseStart = $this->userRepository->find(Auth::user()->id)->courses()
             ->where('courses.status', config('admin.course_start'))
             ->get()->groupBy('pivot.course_id');
 
@@ -25,11 +42,11 @@ class CourseStudyController extends Controller
 
     public function ShowSubject(Request $request, $id)
     {
-        $course = Course::findOrFail($id);
-        $subject = User::findOrFail(Auth::user()->id)
+        $course = $this->courseRepository->find($id);
+        $subject = $this->userRepository->find(Auth::user()->id)
             ->subjects()->wherePivot('course_id', $id)
             ->paginate(config('admin.paginate_subject'));
-        $subjectComplete = User::findOrFail(Auth::user()->id)
+        $subjectComplete = $this->userRepository->find(Auth::user()->id)
             ->subjects()
             ->wherePivot('course_id', $id)
             ->wherePivot('status', config('admin.subject_end'))
@@ -41,15 +58,16 @@ class CourseStudyController extends Controller
 
     public function SubjectDetails(Request $request, $id)
     {
-        $subject = Subject::findOrFail($id);
+        $subject = $this->subjectReposiory->find($id);
 
         if (!Session::has('history'.$subject->id)) {
             Session::put('history'.$subject->id, true);
-            History::create([
+            $history = [
                 'user_id' => Auth::user()->id,
                 'subject_id' => $subject->id,
                 'type' => config('admin.read')
-            ]);
+            ];
+            $this->historyRepository->create($history);
         }
 
         return view('public.course_study.subject_details', compact('subject'));
@@ -59,7 +77,7 @@ class CourseStudyController extends Controller
     {
         if (Auth::check())
         {
-            $reports = User::findOrFail(Auth::user()->id)->reports()->paginate(config('admin.paginate_report'));
+            $reports = $this->userRepository->find(Auth::user()->id)->reports()->paginate(config('admin.paginate_report'));
         }
 
         return view('report.index', compact('reports'));
@@ -71,12 +89,13 @@ class CourseStudyController extends Controller
         {
             $input = $request->all();
             $input['user_id'] = Auth::user()->id;
-            Report::create($input);
-            History::create([
+            $this->reportRepository->create($input);
+            $history = [
                 'user_id' => Auth::user()->id,
-                'subject_id' => $request->subject_id,
-                'type' => config('admin.report')
-            ]);
+                'subject_id' => $subject->id,
+                'type' => config('admin.read')
+            ];
+            $this->historyRepository->create($history);
 
             $request->session()->flash(trans('message.success'), trans('message.notification_success'));
         } catch (Exception $e) {
@@ -90,17 +109,18 @@ class CourseStudyController extends Controller
     {
         try
         {
-            $user = User::findOrFail(Auth::user()->id);
+            $user =$this->userRepository->find(Auth::user()->id);
             $subject = $user->subjects()->wherePivot('subject_id', $request->subject_id)->get();
 
             foreach ($subject as  $value) {
                 $value->pivot->status = config('admin.subject_end');
                 $value->pivot->save();
-                History::create([
+                $history = [
                     'user_id' => Auth::user()->id,
-                    'subject_id' => $value->id,
-                    'type' => config('admin.close')
-                ]);
+                    'subject_id' => $subject->id,
+                    'type' => config('admin.read')
+                ];
+                $this->historyRepository->create($history);
             }
 
             $request->session()->flash(trans('message.success'), trans('message.notification_success'));
@@ -138,7 +158,7 @@ class CourseStudyController extends Controller
 
     public function CourseEndDetail($id)
     {
-        $course = Course::findOrFail($id);
+        $course = $this->courseRepository->find($id);
         $subjects = Auth::user()->subjects()->wherePivot('course_id', $id)->paginate(config('admin.paginate_subject'));
 
         return view('public.course_end.show', compact('subjects','course'));

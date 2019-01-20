@@ -3755,6 +3755,22 @@ input[type=number]::-webkit-inner-spin-button {
 	margin-left: 160px;
 }
 
+a.notif {
+	position: absolute;
+	height: 50px;
+	width: 50px;
+	background: url('http://i.imgur.com/evpC48G.png');
+	background-size: contain;
+	text-decoration: none;
+}
+
+.num {
+	position: absolute;
+	right: 11px;
+	top: 6px;
+	color: #fff;
+}
+
 .subject-style {
 	font-size: 13px;
 }

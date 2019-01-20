@@ -5,13 +5,14 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repositories\EloquentModels\CourseRepository;
-use App\Models\Course;
-use App\Models\Subject;
-use App\Models\CourseCalendar;
-use App\Models\User;
+use App\Repositories\EloquentModels\UserRepository;
+use App\Repositories\EloquentModels\SubjectRepository;
+use App\Repositories\EloquentModels\CalendarRepository;
 use App\Http\Requests\CourseRequest;
+use App\Models\Course;
 use App\Upload;
 use App\Jobs\SendMailEndCourse;
+use App\Notifications\MailNotification;
 use Pusher\Pusher;
 
 class CourseController extends Controller
@@ -21,17 +22,21 @@ class CourseController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    protected $courseRepository, $uploadImage;
+    protected $courseRepository, $uploadImage, $userRepository, $subjectRepository, $calendarRepository;
 
-    public function __construct(CourseRepository $courseRepository, Upload $uploadImage)
+    public function __construct(CourseRepository $courseRepository, Upload $uploadImage, UserRepository $userRepository, SubjectRepository $subjectRepository, CalendarRepository $calendarRepository)
     {
         $this->courseRepository = $courseRepository;
         $this->uploadImage = $uploadImage;
+        $this->userRepository = $userRepository;
+        $this->subjectRepository = $subjectRepository;
+        $this->calendarRepository = $calendarRepository;
     }
 
     public function index()
     {
-        $course = Course::paginate(config('admin.paginate_course'));
+        $course = $this->courseRepository->paginate(config('admin.paginate_course'));
+
         return view('admin.course.index', compact('course'));
     }
 
@@ -42,7 +47,8 @@ class CourseController extends Controller
      */
     public function create()
     {
-        $supervisor = User::where('role', config('admin.supervisor'));
+        $supervisor = $this->userRepository->where('role', '=', config('admin.supervisor'));
+
         return view('admin.course.create', compact('supervisor'));
     }
 
@@ -78,7 +84,7 @@ class CourseController extends Controller
      */
     public function show($id)
     {
-        $course = Course::findOrFail($id);
+        $course = $this->courseRepository->find($id);
         $subjects = $course->subjects()->paginate(config('admin.paginate_course'));
         $calendars = $course->calendars()->get();
 
@@ -110,6 +116,7 @@ class CourseController extends Controller
             $input = $request->all();
             $input['status'] = $request->status;
             $image = $request->old_image;
+
             if($request->has('image'))
             {
                 $file = $this->uploadImage->uploadImage($request->image);
@@ -123,7 +130,7 @@ class CourseController extends Controller
                 $options = array(
                     'cluster' => 'ap1',
                     'useTLS' => true
-                  );
+                );
                 $pusher = new Pusher(
                     env('PUSHER_APP_KEY'),
                     env('PUSHER_APP_SECRET'),
@@ -132,12 +139,18 @@ class CourseController extends Controller
                 );
                 foreach ($users as $user) {
                     dispatch(new SendMailEndCourse($user->first(), $course));
-                    $data = [
-                        'content' => 'Xoa course',
-                        'id' => $user->first()->id
-                    ];
+                    $user->first()->notify(new MailNotification($course));
+                    $notifications = json_decode($user->first()->unreadNotifications);
+                    foreach ($notifications as $notification) {
+                        if ($course->id == $notification->data->course->id) {
+                            $data = [
+                                'content' => trans('message.notification_course_end') .' '. $course->name,
+                                'id' => $user->first()->id,
+                                'notification_id' => $b->id
+                            ];
+                        }
+                    }
                     $pusher->trigger('send-message', 'NotifyEndCourse', $data);
-
                 }
             }
 
@@ -164,8 +177,8 @@ class CourseController extends Controller
             foreach ($subject as  $value) {
                 $value->content->delete();
             }
-            CourseCalendar::where('course_id', $id)->delete();
-            Subject::where('course_id', $id)->delete();
+            $this->calendarRepository->where('course_id', '=',$id)->delete();
+            $this->subjectRepository->where('course_id', '=', $id)->delete();
             $course->courseUsers()->detach();
             $this->courseRepository->delete($id);
 
@@ -179,7 +192,7 @@ class CourseController extends Controller
 
     public function showCourse()
     {
-        $courses = Course::where('status', config('admin.course_start'))->paginate(config('admin.paginate_course'));
+        $courses = $this->courseRepository->where('status', '=', config('admin.course_start'))->paginate(config('admin.paginate_course'));
 
         return view('admin.progress.index', compact('courses'));
     }
@@ -187,7 +200,7 @@ class CourseController extends Controller
     public function showProgress($id)
     {
         $progress = [];
-        $course = Course::findOrFail($id);
+        $course = $this->courseRepository->find($id);
         $users = $course->users()->get()->groupBy('pivot.user_id');
         foreach ($users as $user) {
             $subject = count($user->first()->subjects()->wherePivot('course_id', $course->id)->get());

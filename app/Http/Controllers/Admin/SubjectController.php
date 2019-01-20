@@ -4,11 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Subject;
-use App\Models\Course;
-use App\Models\SubjectContent;
 use App\Repositories\EloquentModels\SubjectRepository;
 use App\Repositories\EloquentModels\SubjectContentRepository;
+use App\Repositories\EloquentModels\CourseRepository;
+use App\Models\Subject;
 
 class SubjectController extends Controller
 {
@@ -17,17 +16,18 @@ class SubjectController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    protected $subjectRepository, $subjectContentRepository;
+    protected $subjectRepository, $subjectContentRepository, $courseRepository;
 
-    public function __construct(SubjectRepository $subjectRepository, SubjectContentRepository $subjectContentRepository)
+    public function __construct(SubjectRepository $subjectRepository, SubjectContentRepository $subjectContentRepository, CourseRepository $courseRepository)
     {
         $this->subjectRepository = $subjectRepository;
         $this->subjectContentRepository = $subjectContentRepository;
+        $this->courseRepository = $courseRepository;
     }
 
     public function index()
     {
-        $subject = Subject::paginate(config('admin.paginate_subject'));
+        $subject = $this->subjectRepository->paginate(config('admin.paginate_subject'));
 
         return view('admin.subject.index', compact('subject'));
     }
@@ -39,7 +39,7 @@ class SubjectController extends Controller
      */
     public function create()
     {
-        $course = Course::all();
+        $course = $this->$courseRepository->all();
 
         return view('admin.subject.create', compact('course'));
     }
