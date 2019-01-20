@@ -134,5 +134,9 @@
         'statistical_month' => 'Thống kê số lượng user và course theo tháng',
         'statistical_precious' => 'Thống kê số lượng user và course theo quý',
         'statistical_year' => 'Thống kê số lượng user và course theo năm',
-        'precious' => 'Thống kê'
+        'precious' => 'Thống kê',
+        'mail_title_report' => 'Mail thông báo report',
+        'mail_preamble_report' => 'Xin chào bạn',
+        'mail_body_report' => 'Chúng tôi gửi mail để thông báo cho bạn viết report về khóa học',
+        'mail_end_report' => 'Xin chân thành cảm ơn',
     ];
