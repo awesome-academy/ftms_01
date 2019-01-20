@@ -126,5 +126,13 @@
         'mail_preamble' => 'Xin chào bạn',
         'mail_body' => 'Chúng gửi bạn email này để thông báo chúng tôi đã đóng khóa học :',
         'mail_end' => 'Chúng tôi xin chân thành cảm ơn bạn đã đồng hành cùng chúng tôi thời gian vừa qua!',
-        'mail_title' => 'Mail thông báo kết thúc khóa học'
+        'mail_title' => 'Mail thông báo kết thúc khóa học',
+        'precious1' => 'Quý 1',
+        'precious2' => 'Quý 2',
+        'precious3' => 'Quý 3',
+        'precious4' => 'Quý 4',
+        'statistical_month' => 'Thống kê số lượng user và course theo tháng',
+        'statistical_precious' => 'Thống kê số lượng user và course theo quý',
+        'statistical_year' => 'Thống kê số lượng user và course theo năm',
+        'precious' => 'Thống kê'
     ];

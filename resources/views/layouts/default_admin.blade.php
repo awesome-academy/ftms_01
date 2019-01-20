@@ -89,6 +89,14 @@
                                     </span>
                                 </a>
                             </li>
+                            <li>
+                                <a href="{{ route('charts') }}">
+                                    <i class="fa fa-tasks"></i> <span>@lang('message.precious')</span>
+                                    <span class="pull-right-container">
+                                        <i class="fa fa-angle-left pull-right"></i>
+                                    </span>
+                                </a>
+                            </li>
                         </ul>
                     </li>
                     <li>
