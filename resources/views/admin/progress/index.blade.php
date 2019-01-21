@@ -18,7 +18,7 @@
                         <tr>
                             <td>{{ $course->name }}</td>
                             <td>
-                                <a href="{{ route('show-progress', $course->id) }}" class="btn btn-primary" title = "{{ trans('message.view') }}"><i class="fa fa-eye"></i></a>
+                                <a href="{{ route('show-progress', $course->id) }}" class="btn btn-primary"><i class="fa fa-eye"></i></a>
                             </td>
                         </tr>
                     @endforeach()
