@@ -11,8 +11,9 @@
         'date_format' => 'm/d/Y',
         'paginate_subject' => 10,
         'rows' => 5,
-        'subject_ready' => 1,
-        'subject_end' => 0,
+        'subject_ready' => 0,
+        'subject_end' => 2,
+        'subject_start' => 1,
         'phone' => '(+88) 111 555 666',
         'email' => 'admin@gmail.com',
         'paginate_course_public' => 6,
@@ -25,4 +26,5 @@
         'paginate_history' => 10,
         'paginate_calendar' => 10,
         'count' => 1,
+        'paginate_course_end' => 6
     ];

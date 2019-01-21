@@ -166,7 +166,7 @@ class CourseController extends Controller
         $users = $course->users()->get()->groupBy('pivot.user_id');
         foreach ($users as $user) {
             $subject = count($user->first()->subjects()->wherePivot('course_id', $course->id)->get());
-            $subjectComplete = count($user->first()->subjects()->wherePivot('course_id', $course->id)->wherePivot('status', 0)->get());
+            $subjectComplete = count($user->first()->subjects()->wherePivot('course_id', $course->id)->wherePivot('status', config('admin.subject_end'))->get());
             $progress[$user->first()->id] = round(($subjectComplete/$subject)*config('admin.progress'));
         }
 

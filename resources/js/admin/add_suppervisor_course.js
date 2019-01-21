@@ -22,7 +22,7 @@ $(document).ready(function(){
                                         <a href = "delete-suppervisor/`
                                          +value.id+`/`+value['pivot'].course_id+`
                                         " class = "btn btn-danger delete">
-                                        Xóa</a>
+                                        <i class="fa fa-trash-o"></i></a>
                                     </td>`
                             + `</tr>`
                     });

@@ -28,7 +28,7 @@ class AddTraineeToCourseController extends Controller
 
     public function create()
     {
-        $course = Course::where('status', '!=', config('admin.course_end'));
+        $course = Course::where('status', '!=', config('admin.course_end'))->get();
         $user = User::where('role', config('admin.member'))->get();
 
         return view('admin.course.trainees.create', compact('course', 'user'));
@@ -36,7 +36,7 @@ class AddTraineeToCourseController extends Controller
 
     public function showSubject(Request $request)
     {
-        $subject = Subject::where('course_id', $request->course_id)->where('status', config('admin.subject_ready'))->get();
+        $subject = Subject::where('course_id', $request->course_id)->where('status', 0)->get();
 
         return response()->json($subject);
     }
@@ -46,10 +46,14 @@ class AddTraineeToCourseController extends Controller
         try
         {
             $subject = $request->subject;
+            $user_id = $request->user_id;
             $status = config('admin.subject_ready');
+
             foreach ($subject as $value) {
-                $user = User::findOrFail($request->user_id);
-                $user->courses()->attach($request->course_id, ['subject_id' => $value, 'status' => $status]);
+                foreach ($user_id as $id) {
+                    $user = User::findOrFail($id);
+                    $user->courses()->attach($request->course_id, ['subject_id' => $value, 'status' => $status]);
+                }
             }
 
             $request->session()->flash(trans('message.success'), trans('message.notification_success'));
