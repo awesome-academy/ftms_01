@@ -32,7 +32,6 @@
             </div>
             <div class="form-group">
                 <a href="{{ route('subject.index') }}" class="btn btn-success">@lang('message.back')</a>
-                <a href="{{ route('subject.edit', $subject->id) }}" class="btn btn-primary">@lang('message.edit')</a>
             </div>
     </div>
 </div>

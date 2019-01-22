@@ -19,7 +19,7 @@
                             <td>{{ $report->subject->course->name }}</td>
                             <td>{{ $report->subject->name }}</td>
                             <td>{{ $report->content }}</td>
-                            <td>{{ $report->created_at }}</td>
+                            <td>{{ $report->created_at_custom }}</td>
                         </tr>
                     @endforeach()
                 </tbody>

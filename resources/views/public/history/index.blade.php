@@ -25,7 +25,7 @@
                                 @lang('message.subject') {{ $history->subject->name }}
                             </td>
                             <td>
-                                {{ $history->created_at }}
+                                {{ $history->created_at_custom }}
                             </td>
                         </tr>
                     @endforeach()
