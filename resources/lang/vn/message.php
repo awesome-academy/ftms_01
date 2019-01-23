@@ -121,5 +121,10 @@
         'not_study' => 'Chưa học',
         'choose_subject' => 'Chọn chủ đề',
         'choose_suppervisor' => 'Chọn suppervisor',
-        'choose_trainee' => 'Chọn học viên'
+        'choose_trainee' => 'Chọn học viên',
+        'subject_email' => 'Thông báo kết thúc khóa học',
+        'mail_preamble' => 'Xin chào bạn',
+        'mail_body' => 'Chúng gửi bạn email này để thông báo chúng tôi đã đóng khóa học :',
+        'mail_end' => 'Chúng tôi xin chân thành cảm ơn bạn đã đồng hành cùng chúng tôi thời gian vừa qua!',
+        'mail_title' => 'Mail thông báo kết thúc khóa học'
     ];

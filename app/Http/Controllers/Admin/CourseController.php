@@ -11,6 +11,7 @@ use App\Models\CourseCalendar;
 use App\Models\User;
 use App\Http\Requests\CourseRequest;
 use App\Upload;
+use App\Jobs\SendMailEndCourse;
 
 class CourseController extends Controller
 {
@@ -115,7 +116,16 @@ class CourseController extends Controller
                 $file = $this->uploadImage->uploadImage($request->image);
                 $image = $file;
             }
-            $this->courseRepository->update($input, $id);
+            $course = $this->courseRepository->update($input, $id);
+            $users = $course->users()->get()->groupBy('pivot.user_id');
+
+            if ($course->status == config('admin.course_end'))
+            {
+                foreach ($users as $user) {
+                    dispatch(new SendMailEndCourse($user->first(), $course));
+                }
+            }
+
             $request->session()->flash(trans('message.success'), trans('message.notification_success'));
        } catch (Exception $e) {
             $request->session()->flash(trans('message.fails'), trans('message.notification_fails'));
